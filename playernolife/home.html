@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang Chủ - Phúc Bé Tí</title>
+  <meta name="description"
+    content="Portfolio cá nhân của Phúc Bé Tí — khám phá hành trình, kinh nghiệm và chia sẻ thú vị.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="cosmos-theme.css" rel="stylesheet">
+  <style>
+    .hero h1 {
+      font-size: 2.4rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+
+<body data-cinematic="nebula">
+  <!-- Warp Overlay -->
+  <div id="warp-overlay" class="warp-overlay"></div>
+
+  <!-- Floating Planets -->
+  <!-- Floating Social Menu -->
+  <div class="floating-social-wrapper">
+    <div class="floating-social-trigger"><i class="fas fa-share-alt"></i></div>
+    <a href="https://www.facebook.com/dphuc.ires07?locale=vi_VN" class="menu-item"><i class="fab fa-facebook-f"></i>
+      Facebook</a>
+    <a href="https://github.com/DangNguyenDuyPhuc" class="menu-item"><i class="fab fa-github"></i> GitHub</a>
+    <a href="https://www.instagram.com/phucbetiiiiii/" class="menu-item"><i class="fab fa-instagram"></i>instagrams</a>
+  </div>
+
+  <!-- Loader -->
+  <div id="loader-overlay" class="loader-overlay">
+    <div class="cosmos-loader"></div>
+    <div class="loader-text">Đang dịch chuyển qua không gian...</div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-dark py-3">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-4" href="index.html">Phúc Bé Tí</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="home.html">Trang Chủ</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Hồ Sơ CV</a>
+            <ul class="dropdown-menu shadow border-0">
+              <li><a class="dropdown-item" href="gioithieubthan.html">Giới Thiệu</a></li>
+              <li><a class="dropdown-item" href="trainghiem.html">Trải Nghiệm</a></li>
+              <li><a class="dropdown-item" href="kinhnghiem.html">Kinh Nghiệm</a></li>
+              <li><a class="dropdown-item" href="hoatdong.html">Hoạt Động</a></li>
+              <li><a class="dropdown-item" href="khenthuong.html">Khen Thưởng</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="https://blog.fbaio.org/">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="lifestyle.html">Lifestyle</a></li>
+          <li class="nav-item"><a class="nav-link" href="workspace.html">Workspace</a></li>
+          <li class="nav-item"><a class="nav-link" href="snippets.html">Snippets</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <section class="hero">
+      <h1 class="animated-title">Mỗi Chi Tiết Đều Mang Một Câu Chuyện. Hãy Cùng Khám Phá Câu Chuyện Của Tôi</h1>
+      <p>Khám phá hành trình, kinh nghiệm và những chia sẻ thú vị của tôi.</p>
+      <a href="gioithieubthan.html" id="btn-kham-pha" class="btn-detail mt-3">
+        Khám Phá Hồ Sơ Của Tôi <i class="fas fa-rocket"></i>
+      </a>
+    </section>
+  </div>
+
+  <!-- 1. Giới Thiệu -->
+  <div class="scroll-section">
+    <div class="container">
+      <div class="section-inner scroll-reveal p-4 p-md-5">
+        <div class="text-center mb-4">
+          <img src="https://i1-c.pinimg.com/736x/1e/ef/f8/1eeff8134eac63b5f367d464b2da70e9.jpg" alt="Ảnh đại diện"
+            class="profile-preview mb-3" style="width:120px;height:120px;object-fit:cover;">
+          <h2 class="section-title"><i class="fas fa-user"></i> Đặng Nguyễn Duy Phúc</h2>
+          <p class="section-subtitle">Tìm hiểu thêm về con người và câu chuyện của tôi.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 scroll-reveal">
+            <div class="preview-card p-4">
+              <h5><i class="fas fa-graduation-cap me-2"></i>Học Vấn</h5>
+              <p>Sinh viên năm nhất trường Đại Học Trà Vinh , chuyên ngành Công nghệ thông tin.
+                <br> Chuyên về lập trình web, AI.</br>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 scroll-reveal">
+            <div class="preview-card p-4">
+              <h5><i class="fas fa-heart me-2"></i>Đam Mê</h5>
+              <p>Luôn tìm cách học hỏi và phát triển bản thân mỗi ngày.
+                <br> Thích khám phá và tìm hiểu những điều mới.
+                <br> Luôn cố gắng để trở thành phiên bản tốt nhất của mình.
+                <br> Thích học hỏi về các mảng công nghệ.
+                <br> Đam mê chụp ảnh và quay phim.
+                <br> Thích ca hát và nhảy múa.
+                <br> Thích chơi game.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <a href="gioithieubthan.html" class="btn-detail">Xem Chi Tiết <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"><i class="fas fa-chevron-down"></i></div>
+
+  <!-- 2. Trải Nghiệm -->
+  <div class="scroll-section">
+    <div class="container">
+      <div class="section-inner scroll-reveal p-4 p-md-5">
+        <h2 class="section-title"><i class="fas fa-star"></i> Trải Nghiệm</h2>
+        <p class="section-subtitle">Những cột mốc quan trọng trong hành trình phát triển.</p>
+        <div class="row g-4">
+          <div class="col-md-6 scroll-reveal">
+            <div class="preview-card p-4">
+              <span class="badge-year"><i class="fas fa-calendar me-1"></i>2023</span>
+              <h5 class="mt-3"><i class="fas fa-star me-2"></i>Trải Nghiệm 1</h5>
+              <p>Cách con Người có kỉ niệm sống.</p>
+            </div>
+          </div>
+          <div class="col-md-6 scroll-reveal">
+            <div class="preview-card p-4">
+              <span class="badge-year"><i class="fas fa-calendar me-1"></i>2024</span>
+              <h5 class="mt-3"><i class="fas fa-star me-2"></i>Trải Nghiệm 3</h5>
+              <p>Sống là phải có những trải nghiệm thú vị.</p>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <a href="trainghiem.html" class="btn-detail">Xem Tất Cả Trải Nghiệm <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"><i class="fas fa-chevron-down"></i></div>
+
+  <!-- 3. Kinh Nghiệm -->
+  <div class="scroll-section">
+    <div class="container">
+      <div class="section-inner scroll-reveal p-4 p-md-5">
+        <h2 class="section-title"><i class="fas fa-briefcase"></i> Kinh Nghiệm Làm Việc</h2>
+        <p class="section-subtitle">Hành trình sự nghiệp và những vị trí đã đảm nhận.</p>
+        <div class="row g-4">
+          <div class="col-md-4 scroll-reveal">
+            <div class="preview-card p-4">
+              <span class="badge-year"><i class="fas fa-calendar me-1"></i>2025 - Hiện Tại</span>
+              <h5 class="mt-3">Đại Học Trà Vinh</h5>
+              <p><strong style="color:var(--cosmos-gold)">Sinh Viên Năm Nhất</strong></p>
+              <p>Đang học hỏi thêm nhiều kiến thức mới mỗi ngày.</p>
+            </div>
+          </div>
+          <div class="col-md-4 scroll-reveal">
+            <div class="preview-card p-4">
+              <span class="badge-year"><i class="fas fa-calendar me-1"></i>2026 - 2027</span>
+              <h5 class="mt-3">Thực tập sinh FPT</h5>
+              <p><strong style="color:var(--cosmos-gold)">Công Ty FPT</strong></p>
+              <p>Thực tập và phát triển kỹ năng chuyên môn.</p>
+            </div>
+          </div>
+          <div class="col-md-4 scroll-reveal">
+            <div class="preview-card p-4">
+              <span class="badge-year"><i class="fas fa-calendar me-1"></i>2028 - 2029</span>
+              <h5 class="mt-3">Đi làm</h5>
+              <p><strong style="color:var(--cosmos-gold)">Đại Học Trà Vinh</strong></p>
+              <p>Giáo viên sau khi tốt nghiệp Đại Học.</p>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <a href="kinhnghiem.html" class="btn-detail">Xem Chi Tiết <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"><i class="fas fa-chevron-down"></i></div>
+
+  <!-- 4. Hoạt Động -->
+  <div class="scroll-section">
+    <div class="container">
+      <div class="section-inner scroll-reveal p-4 p-md-5">
+        <h2 class="section-title"><i class="fas fa-users"></i> Hoạt Động</h2>
+        <p class="section-subtitle">Các hoạt động ngoại khóa và đóng góp cộng đồng.</p>
+        <div class="row g-4">
+          <div class="col-md-4 scroll-reveal">
+            <div class="preview-card p-0 overflow-hidden">
+              <img src="ky_niem_truong.jpg" class="img-fluid w-100" style="height: 150px; object-fit: cover;"
+                alt="Kỷ niệm">
+              <div class="p-4">
+                <h5><i class="fas fa-smile me-2"></i>Kỷ Niệm Trường Lớp</h5>
+                <span class="badge-year">Năm cấp 3</span>
+                <p class="mt-2">Những khoảnh khắc vui vẻ cùng bạn bè dưới mái trường thân yêu.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 scroll-reveal">
+            <div class="preview-card p-0 overflow-hidden">
+              <img src="chill_dem.jpg" class="img-fluid w-100" style="height: 150px; object-fit: cover;"
+                alt="Chill đêm">
+              <div class="p-4">
+                <h5><i class="fas fa-moon me-2"></i>Chill Đêm</h5>
+                <span class="badge-year">Góc phố quen</span>
+                <p class="mt-2">Tận hưởng không khí yên tĩnh và suy ngẫm về cuộc sống.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 scroll-reveal">
+            <div class="preview-card p-0 overflow-hidden">
+              <img src="ngoai_khoa.jpg" class="img-fluid w-100" style="height: 150px; object-fit: cover;"
+                alt="Ngoại khóa">
+              <div class="p-4">
+                <h5><i class="fas fa-leaf me-2"></i>Trải Nghiệm Ngoại Khóa</h5>
+                <span class="badge-year">Dã ngoại</span>
+                <p class="mt-2">Rèn luyện kỹ năng và tinh thần đồng đội qua các chuyến đi.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <a href="hoatdong.html" class="btn-detail">Xem Tất Cả Hoạt Động <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"><i class="fas fa-chevron-down"></i></div>
+
+  <!-- 5. Khen Thưởng -->
+  <div class="scroll-section">
+    <div class="container">
+      <div class="section-inner scroll-reveal p-4 p-md-5">
+        <h2 class="section-title"><i class="fas fa-trophy"></i> Khen Thưởng &amp; Thành Tựu</h2>
+        <p class="section-subtitle">Những con số nói lên tất cả.</p>
+        <div class="row g-4 mb-4">
+          <div class="col-6 col-md-3 scroll-reveal">
+            <div class="stat-preview p-4">
+              <h3>2+</h3>
+              <p>Khen Thưởng</p>
+            </div>
+          </div>
+          <div class="col-6 col-md-3 scroll-reveal">
+            <div class="stat-preview p-4">
+              <h3>2+</h3>
+              <p>Dự Án</p>
+            </div>
+          </div>
+          <div class="col-6 col-md-3 scroll-reveal">
+            <div class="stat-preview p-4">
+              <h3>50+</h3>
+              <p>Người Hài Lòng</p>
+            </div>
+          </div>
+          <div class="col-6 col-md-3 scroll-reveal">
+            <div class="stat-preview p-4">
+              <h3>1+</h3>
+              <p>Năm Kinh Nghiệm</p>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <a href="khenthuong.html" class="btn-detail">Xem Giải Thưởng <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"><i class="fas fa-chevron-down"></i></div>
+
+  <!-- 6. Blog -->
+  <div class="scroll-section">
+    <div class="container">
+      <div class="section-inner scroll-reveal p-4 p-md-5">
+        <h2 class="section-title"><i class="fas fa-blog"></i> Bài Viết Mới Nhất</h2>
+        <p class="section-subtitle">Chia sẻ kiến thức và góc nhìn cá nhân.</p>
+        <div class="row g-4">
+          <div class="col-md-6 scroll-reveal">
+            <div class="preview-card p-4">
+              <span class="badge-year"><i class="fas fa-calendar-alt me-1"></i>16/03/2026</span>
+              <h5 class="mt-3"><i class="fas fa-pen me-2"></i>Các công cụ DeObfucate - giải mã code xịn nhất 👀</h5>
+              <p>Chia sẻ những công cụ hàng đầu giúp bạn giải mã và khám phá bí mật đằng sau những dòng code JavaScript
+                phức tạp...</p>
+            </div>
+          </div>
+          <div class="col-md-6 scroll-reveal">
+            <div class="preview-card p-4">
+              <span class="badge-year"><i class="fas fa-calendar-alt me-1"></i>09/03/2026</span>
+              <h5 class="mt-3"><i class="fas fa-pen me-2"></i>Công khai toàn bộ 145 API của FB AIO 🤯</h5>
+              <p>Một bước đi táo bạo khi công khai toàn bộ hệ thống API mạnh mẽ của công cụ FB AIO, mở ra nhiều cơ hội
+                mới cho các nhà phát triển...</p>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <a href="https://blog.fbaio.org/" class="btn-detail">Đọc Thêm Blog <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"><i class="fas fa-chevron-down"></i></div>
+
+  <!-- 7. Lifestyle -->
+  <div class="scroll-section">
+    <div class="container">
+      <div class="section-inner scroll-reveal p-4 p-md-5">
+        <h2 class="section-title"><i class="fas fa-camera-retro"></i> Phong Cách Sống</h2>
+        <p class="section-subtitle">Khám phá những khoảnh khắc đáng nhớ qua ống kính cá nhân.</p>
+        <div class="row g-4">
+          <div class="col-md-6 scroll-reveal">
+            <div class="preview-card p-0 overflow-hidden text-center">
+              <img src="dalat.jpg" class="img-fluid" style="height: 200px; width: 100%; object-fit: cover;"
+                alt="Đà Lạt">
+              <div class="p-4">
+                <h5>Chuyến đi Đà Lạt</h5>
+                <p>Những khoảnh khắc bình yên và trong trẻo tại thành phố ngàn hoa.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 scroll-reveal">
+            <div class="preview-card p-0 overflow-hidden text-center">
+              <img src="thienvien.JPG" class="img-fluid" style="height: 200px; width: 100%; object-fit: cover;"
+                alt="Thiền Viện">
+              <div class="p-4">
+                <h5>Thanh tịnh chốn thiền viện</h5>
+                <p>Vẻ đẹp truyền thống hòa quyện cùng nét hiện đại trong không gian tĩnh lặng.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <a href="lifestyle.html" class="btn-detail">Xem Toàn Bộ Gallery <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"><i class="fas fa-chevron-down"></i></div>
+
+  <!-- 8. Workspace & Snippets -->
+  <div class="scroll-section">
+    <div class="container">
+      <div class="section-inner scroll-reveal p-4 p-md-5">
+        <h2 class="section-title"><i class="fas fa-laptop-code"></i> Workspace &amp; Snippets</h2>
+        <p class="section-subtitle">Khám phá không gian làm việc Acer Nitro V15 và kho tàng mã nguồn hữu ích.</p>
+        <div class="row g-4">
+          <div class="col-md-6 scroll-reveal">
+            <div class="preview-card p-4 text-center">
+              <i class="fas fa-desktop fa-3x mb-3" style="color:var(--cosmos-purple)"></i>
+              <h5>My Setup</h5>
+              <p>Chi tiết về phần cứng (Logitech G512/G102) và môi trường lập trình tối ưu.</p>
+              <a href="workspace.html" class="btn-detail" style="font-size:0.85rem;padding:8px 20px">Xem Workspace <i
+                  class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="col-md-6 scroll-reveal">
+            <div class="preview-card p-4 text-center">
+              <i class="fas fa-code fa-3x mb-3" style="color:var(--cosmos-cyan)"></i>
+              <h5>Snippets</h5>
+              <p>Bộ sưu tập các đoạn code JavaScript, CSS và thủ thuật lập trình chọn lọc.</p>
+              <a href="snippets.html" class="btn-detail" style="font-size:0.85rem;padding:8px 20px">Xem Snippets <i
+                  class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nav Arrows -->
+  <div class="nav-arrows">
+    <button id="btn-up" title="Lên đầu"><i class="fas fa-chevron-up"></i></button>
+    <button id="btn-down" title="Xuống cuối"><i class="fas fa-chevron-down"></i></button>
+  </div>
+
+  <div class="section-divider"><i class="fas fa-chevron-down"></i></div>
+
+  <!-- 9. Media & Location -->
+  <div class="scroll-section">
+    <div class="container">
+      <div class="section-inner scroll-reveal p-4 p-md-5">
+        <h2 class="section-title"><i class="fas fa-map-marker-alt"></i> Kết Nối & Truyền Thông</h2>
+        <p class="section-subtitle">Vị trí hiện tại và những nội dung chia sẻ trên YouTube.</p>
+        <div class="row g-4">
+          <!-- YouTube Link -->
+          <div class="col-md-6 scroll-reveal">
+            <div class="preview-card p-4 text-center h-100 d-flex flex-column justify-content-center"
+              style="border: 1px solid var(--cosmos-border); background: rgba(255, 0, 0, 0.05);">
+              <i class="fab fa-youtube fa-5x mb-4"
+                style="color: #ff0000; filter: drop-shadow(0 0 15px rgba(255,0,0,0.5));"></i>
+              <h5 class="mb-2">Kênh YouTube Cá Nhân</h5>
+              <p class="text-white-50 mb-4">@phucbeti999</p>
+              <p class="mb-4">Nơi chia sẻ kiến thức lập trình, thủ thuật phần mềm và những khoảnh khắc đời thường.</p>
+              <div class="mt-auto">
+                <a href="https://www.youtube.com/@phucbeti999" target="_blank" class="btn-detail"
+                  style="background: #ff0000; border-color: #ff0000;">
+                  Ghé Thăm Kênh <i class="fas fa-external-link-alt ms-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Google Maps Embed -->
+          <div class="col-md-6 scroll-reveal">
+            <div class="preview-card p-0 overflow-hidden"
+              style="border: 1px solid var(--cosmos-border); background: rgba(0,0,0,0.3);">
+              <div class="ratio ratio-16x9">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.123456789!2d106.345678!3d9.923456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a0175b3b5b5b5b%3A0x5b5b5b5b5b5b5b5b!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBUcsOgIFZpbmggKFRPVSAxKQ!5e0!3m2!1svi!2svn!4v1621234567890!5m2!1svi!2svn"
+                  style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+              </div>
+              <div class="p-4 text-center">
+                <h5>Vị Trí Hiện Tại</h5>
+                <p>Đại Học Trà Vinh - Nơi tôi đang học tập và nghiên cứu.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"><i class="fas fa-chevron-down"></i></div>
+
+  <!-- 10. Feedback Section -->
+  <div class="scroll-section">
+    <div class="container">
+      <div class="section-inner scroll-reveal p-4 p-md-5">
+        <h2 class="section-title"><i class="fas fa-comment-dots"></i> Gửi Ý Kiến Phản Hồi</h2>
+        <p class="section-subtitle">Đóng góp của bạn giúp tôi hoàn thiện trang web hơn mỗi ngày.</p>
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="preview-card p-4">
+              <div class="mb-3">
+                <label for="userEmail" class="form-label">Email của bạn:</label>
+                <input type="email" id="userEmail" class="form-control bg-dark text-white border-secondary"
+                  placeholder="example@gmail.com">
+              </div>
+              <div class="mb-3">
+                <label for="feedbackInput" class="form-label">Ý kiến của bạn:</label>
+                <textarea id="feedbackInput" class="form-control bg-dark text-white border-secondary" rows="3"
+                  placeholder="Nhập ý kiến tại đây..."></textarea>
+              </div>
+              <div class="text-center">
+                <button onclick="sendFeedback()" class="btn-detail">Gửi Phản Hồi <i
+                    class="fas fa-paper-plane ms-2"></i></button>
+              </div>
+              <div id="feedbackResponse" class="mt-4 text-center" style="min-height: 50px;">
+                <!-- Phản hồi sẽ hiển thị ở đây -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function validateEmail(email) {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regex.test(email);
+    }
+
+    async function sendFeedback() {
+      const email = document.getElementById('userEmail').value;
+      const feedback = document.getElementById('feedbackInput').value;
+      const responseArea = document.getElementById('feedbackResponse');
+
+      if (feedback.trim() === "" || email.trim() === "") {
+        responseArea.innerHTML = `<div class="alert alert-warning bg-transparent border-warning text-warning">Vui lòng điền đầy đủ Email và Ý kiến!</div>`;
+        return;
+      }
+
+      if (!validateEmail(email)) {
+        responseArea.innerHTML = `<div class="alert alert-danger bg-transparent border-danger text-danger">Email không hợp lệ! Vui lòng kiểm tra lại.</div>`;
+        return;
+      }
+
+      // THAY THẾ MAILTO BẰNG PHƯƠNG PHÁP GỬI NGẦM (AJAX/FETCH)
+      responseArea.innerHTML = `<div class="alert alert-info bg-transparent border-info text-info"><i class="fas fa-spinner fa-spin me-2"></i> Đang gửi ý kiến của bạn...</div>`;
+
+      try {
+        // Bạn hãy thay đường dẫn này bằng link Formspree của bạn sau khi đăng ký (ví dụ: https://formspree.io/f/your_id)
+        const FORMSPREE_ENDPOINT = "https://formspree.io/f/xqenvkak"; // Đây là ví dụ, hãy đổi thành ID của bạn
+
+        const response = await fetch(FORMSPREE_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: email,
+            message: feedback
+          })
+        });
+
+        if (response.ok) {
+          // Thành công: Sử dụng innerHTML để báo tin vui
+          responseArea.innerHTML = `
+            <div class="alert alert-success bg-transparent border-success text-success">
+              <i class="fas fa-check-circle me-2"></i> Tuyệt vời! Ý kiến đã được gửi thẳng đến Phúc. Cảm ơn bạn!
+            </div>
+          `;
+          document.getElementById('userEmail').value = "";
+          document.getElementById('feedbackInput').value = "";
+        } else {
+          throw new Error("Lỗi máy chủ");
+        }
+      } catch (error) {
+        responseArea.innerHTML = `<div class="alert alert-danger bg-transparent border-danger text-danger">Có lỗi xảy ra khi gửi. Vui lòng thử lại sau!</div>`;
+      }
+    }
+  </script>
+
+  <footer>
+    <div class="container">
+      <p class="mb-0 fs-6"><strong>© 2025 Phúc Bé Tí.</strong> Tất cả quyền được bảo lưu.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="mouse-effect.js"></script>
+  <script src="cinematic-bg.js"></script>
+  <script src="cosmos-theme.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="aurora">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặng Nguyễn Duy Phúc | Premium Assignment Hub</title>
+    <meta name="description"
+        content="Hệ điều hành ảo quản lý và trình diễn danh sách dự án, bài tập lập trình của Đặng Nguyễn Duy Phúc lớp DA25TTC.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css?v=4">
+</head>
+
+<body>
+    <!-- Background GIF -->
+    <img src="bg2.gif" alt="" class="bg-image" id="bgImage">
+    <div class="bg-overlay"></div>
+
+    <!-- Animated particles canvas -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Mouse-following glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Main Dashboard Container -->
+    <div class="dashboard-wrapper">
+        <main class="dashboard-container">
+
+            <!-- LEFT SIDEBAR: PROFILE & CONTROLS -->
+            <aside class="dashboard-sidebar slide-up-in">
+
+                <!-- Student Profile Widget -->
+                <div class="glass-box profile-card">
+                    <div class="profile-avatar-wrap">
+                        <div class="avatar-holo-ring"></div>
+                        <div class="avatar-holo-ring-inner"></div>
+                        <div class="profile-avatar">DP</div>
+                    </div>
+                    <h2 class="profile-name">Đặng Nguyễn Duy Phúc</h2>
+                    <span class="profile-class">LỚP DA25TTC</span>
+
+                    <div class="profile-status">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Đang lập trình</span>
+                    </div>
+
+                    <div class="profile-meta">
+                        <div class="meta-item">
+                            <span class="meta-val" id="metaCount">7/7</span>
+                            <span class="meta-label">Bài tập</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-val">A+</span>
+                            <span class="meta-label">Đánh giá</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-val" id="metaHours">99+</span>
+                            <span class="meta-label">Giờ Code</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Navigation Shortcuts -->
+                <div class="glass-box">
+                    <ul class="sidebar-menu">
+                        <li class="menu-item active" id="menuOverview">
+                            <button><i data-lucide="layout-dashboard"></i>Tổng quan Hệ thống</button>
+                        </li>
+                        <li class="menu-item" id="menuTerminal">
+                            <button id="terminalFocusBtn"><i data-lucide="terminal"></i>Bảng điều khiển
+                                Terminal</button>
+                        </li>
+                        <li class="menu-item" id="menuHelp">
+                            <button id="shortcutHelpBtn"><i data-lucide="keyboard"></i>Danh sách Phím tắt</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Theme Customizer Hub -->
+                <div class="glass-box control-hub">
+                    <h3 class="section-title"><i data-lucide="palette"></i>Chủ đề Hệ thống</h3>
+                    <div class="theme-picker-grid">
+                        <button class="theme-btn active" data-theme-select="aurora">
+                            <span class="theme-color-dot"></span>Aurora
+                        </button>
+                        <button class="theme-btn" data-theme-select="cyberpunk">
+                            <span class="theme-color-dot"></span>Cyber
+                        </button>
+                        <button class="theme-btn" data-theme-select="eclipse">
+                            <span class="theme-color-dot"></span>Eclipse
+                        </button>
+                        <button class="theme-btn" data-theme-select="terminal">
+                            <span class="theme-color-dot"></span>Matrix
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Lofi Ambient Music Player -->
+                <div class="glass-box music-player-card" id="lofiPlayerCard">
+                    <div class="player-header">
+                        <div class="player-cover" id="playerCover">
+                            <i data-lucide="disc"></i>
+                        </div>
+                        <div class="player-meta">
+                            <div class="track-name" id="trackName">Lofi Radio Chill</div>
+                            <div class="track-artist" id="trackArtist">Phát trực tuyến</div>
+                        </div>
+                        <div class="player-visualizer" id="playerVisualizer">
+                            <span class="vis-bar"></span>
+                            <span class="vis-bar"></span>
+                            <span class="vis-bar"></span>
+                            <span class="vis-bar"></span>
+                            <span class="vis-bar"></span>
+                        </div>
+                    </div>
+                    <div class="player-controls">
+                        <button class="player-btn" id="btnPrev" title="Bài trước"><i
+                                data-lucide="skip-back"></i></button>
+                        <button class="player-btn btn-play-pause" id="btnPlayPause" title="Phát/Tạm dừng"><i
+                                data-lucide="play" id="playIcon"></i></button>
+                        <button class="player-btn" id="btnNext" title="Bài tiếp theo"><i
+                                data-lucide="skip-forward"></i></button>
+                        <div class="player-volume-wrap">
+                            <i data-lucide="volume-2"></i>
+                            <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="50">
+                        </div>
+                    </div>
+                </div>
+
+            </aside>
+
+            <!-- RIGHT MAIN PANEL: HEADER, STATS & GRID -->
+            <div class="dashboard-main">
+
+                <!-- Dynamic Hero Header -->
+                <header class="glass-box header-hero slide-up-in delay-1">
+                    <div class="aurora-border"></div>
+                    <div class="hero-flex">
+                        <div class="hero-text-side">
+                            <div class="greeting-pill">
+                                <span class="emoji" id="greetingEmoji">👋</span>
+                                <span id="greetingText">Xin chào lập trình viên!</span>
+                            </div>
+                            <h1 class="hero-title">
+                                <span class="title-accent" id="mainTitleText">Danh sách Dự án</span>
+                                <span class="cursor">|</span>
+                            </h1>
+                            <p class="hero-subtitle">Hệ điều hành ảo quản lý và trực quan hóa các dự án, bài tập học tập
+                                nâng cao của sinh viên <strong>Đặng Nguyễn Duy Phúc</strong> lớp
+                                <strong>DA25TTC</strong>.</p>
+                        </div>
+                        <div class="hero-deco">
+                            <div class="deco-circle"></div>
+                            <div class="deco-circle-inner"></div>
+                            <div class="deco-hexagon"></div>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Premium Stats Center -->
+                <section class="stats-hub slide-up-in delay-2">
+
+                    <!-- Progress Card -->
+                    <div class="glass-box stat-box">
+                        <div class="stat-info">
+                            <span class="stat-label">Tiến độ bài tập</span>
+                            <span class="stat-value" id="statCompleted">0/7</span>
+                        </div>
+                        <div class="progress-ring-wrap">
+                            <svg width="54" height="54">
+                                <circle class="progress-ring-circle" stroke="rgba(255,255,255,0.06)" stroke-width="4"
+                                    fill="transparent" r="23" cx="27" cy="27" />
+                                <circle class="progress-ring-circle" id="statCircle" stroke="var(--accent-primary)"
+                                    stroke-width="4" stroke-dasharray="144.5" stroke-dashoffset="144.5"
+                                    fill="transparent" r="23" cx="27" cy="27" />
+                            </svg>
+                            <span class="progress-ring-val" id="statPercent">0%</span>
+                        </div>
+                    </div>
+
+                    <!-- Tech Stack Counter -->
+                    <div class="glass-box stat-box">
+                        <div class="stat-info">
+                            <span class="stat-label">Công nghệ Sử dụng</span>
+                            <span class="stat-value" id="statTech">0</span>
+                        </div>
+                        <div class="stat-box-icon">
+                            <i data-lucide="code-2"></i>
+                        </div>
+                    </div>
+
+                    <!-- Evaluation Card -->
+                    <div class="glass-box stat-box">
+                        <div class="stat-info">
+                            <span class="stat-label">Mức Độ Nỗ lực</span>
+                            <span class="stat-value" id="statEffort">0%</span>
+                        </div>
+                        <div class="stat-box-icon">
+                            <i data-lucide="star"></i>
+                        </div>
+                    </div>
+
+                </section>
+
+                <!-- Project Catalog Grid Section -->
+                <section class="slide-up-in delay-3">
+                    <div class="section-header">
+                        <h3 class="section-main-title"><i data-lucide="folder-open"></i>Bộ sưu tập Dự án</h3>
+                        <div class="view-controls">
+                            <button class="view-btn active" id="btnGridView" title="Chế độ Lưới"><i
+                                    data-lucide="grid"></i></button>
+                            <button class="view-btn" id="btnListView" title="Chế độ Danh sách"><i
+                                    data-lucide="list"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Projects Grid Container -->
+                    <div class="project-grid" id="projectGrid">
+
+                        <!-- Assignment 1 -->
+                        <a href="bai%20tho/index.html" class="glass-box project-card" data-index="0">
+                            <div class="card-top">
+                                <span class="project-num">01</span>
+                                <span class="project-badge badge-completed">Hoàn thành</span>
+                            </div>
+                            <div class="project-icon-box">
+                                <i data-lucide="book-open"></i>
+                            </div>
+                            <div class="project-info">
+                                <h4 class="project-title">Bài Thơ Quê Hương</h4>
+                                <p class="project-desc">Trang thơ cổ điển lãng mạn kết hợp hiệu ứng CSS nghệ thuật.</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">HTML5</span>
+                                    <span class="tech-tag">CSS3</span>
+                                    <span class="tech-tag">Responsive</span>
+                                </div>
+                            </div>
+                            <div class="project-action">
+                                <span>Khám phá dự án</span>
+                                <i data-lucide="arrow-right"></i>
+                            </div>
+                        </a>
+
+                        <!-- Assignment 2 -->
+                        <a href="web%20nhac/index.html" class="glass-box project-card" data-index="1">
+                            <div class="card-top">
+                                <span class="project-num">02</span>
+                                <span class="project-badge badge-premium">Premium</span>
+                            </div>
+                            <div class="project-icon-box">
+                                <i data-lucide="music-4"></i>
+                            </div>
+                            <div class="project-info">
+                                <h4 class="project-title">Web Âm Nhạc Trực Tuyến</h4>
+                                <p class="project-desc">Trình phát nhạc sống động với đầy đủ tính năng phát, tua và lưu
+                                    trữ playlist bài hát.</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">HTML5</span>
+                                    <span class="tech-tag">CSS3</span>
+                                    <span class="tech-tag">JS ES6</span>
+                                </div>
+                            </div>
+                            <div class="project-action">
+                                <span>Khám phá dự án</span>
+                                <i data-lucide="arrow-right"></i>
+                            </div>
+                        </a>
+
+                        <!-- Assignment 3 -->
+                        <a href="playernolife/index.html" class="glass-box project-card" data-index="2">
+                            <div class="card-top">
+                                <span class="project-num">03</span>
+                                <span class="project-badge badge-completed">Hoàn thành</span>
+                            </div>
+                            <div class="project-icon-box">
+                                <i data-lucide="user"></i>
+                            </div>
+                            <div class="project-info">
+                                <h4 class="project-title">Giới Thiệu Bản Thân</h4>
+                                <p class="project-desc">Trang hồ sơ năng lực cá nhân, sở thích cá nhân độc đáo và các kỹ
+                                    năng chuyên môn.</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">HTML5</span>
+                                    <span class="tech-tag">CSS3</span>
+                                    <span class="tech-tag">Transitions</span>
+                                </div>
+                            </div>
+                            <div class="project-action">
+                                <span>Khám phá dự án</span>
+                                <i data-lucide="arrow-right"></i>
+                            </div>
+                        </a>
+
+                        <!-- Assignment 4 -->
+                        <a href="tranglogin/index.html" class="glass-box project-card" data-index="3">
+                            <div class="card-top">
+                                <span class="project-num">04</span>
+                                <span class="project-badge badge-completed">Hoàn thành</span>
+                            </div>
+                            <div class="project-icon-box">
+                                <i data-lucide="log-in"></i>
+                            </div>
+                            <div class="project-info">
+                                <h4 class="project-title">Cổng Đăng Nhập Hệ Thống</h4>
+                                <p class="project-desc">Giao diện bảo mật đăng nhập với tính năng captcha ngẫu nhiên, ẩn
+                                    hiện mật khẩu và xác thực.</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">HTML5</span>
+                                    <span class="tech-tag">CSS3</span>
+                                    <span class="tech-tag">Validation</span>
+                                </div>
+                            </div>
+                            <div class="project-action">
+                                <span>Khám phá dự án</span>
+                                <i data-lucide="arrow-right"></i>
+                            </div>
+                        </a>
+
+                        <!-- Assignment 5 -->
+                        <a href="trangdangkiduthi/index.html" class="glass-box project-card" data-index="4">
+                            <div class="card-top">
+                                <span class="project-num">05</span>
+                                <span class="project-badge badge-completed">Hoàn thành</span>
+                            </div>
+                            <div class="project-icon-box">
+                                <i data-lucide="file-signature"></i>
+                            </div>
+                            <div class="project-info">
+                                <h4 class="project-title">Đăng Kí Dự Thi THPT</h4>
+                                <p class="project-desc">Biểu mẫu nộp hồ sơ đăng ký thi tốt nghiệp trực tuyến chính thức
+                                    tích hợp xác thực dữ liệu.</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">HTML5</span>
+                                    <span class="tech-tag">CSS3</span>
+                                    <span class="tech-tag">Inputs</span>
+                                </div>
+                            </div>
+                            <div class="project-action">
+                                <span>Khám phá dự án</span>
+                                <i data-lucide="arrow-right"></i>
+                            </div>
+                        </a>
+
+                        <!-- Assignment 6 -->
+                        <a href="Thuê Sân Cầu Lông/index.html" class="glass-box project-card" data-index="5">
+                            <div class="card-top">
+                                <span class="project-num">06</span>
+                                <span class="project-badge badge-premium">Premium</span>
+                            </div>
+                            <div class="project-icon-box">
+                                <i data-lucide="calendar-check"></i>
+                            </div>
+                            <div class="project-info">
+                                <h4 class="project-title">Dịch Vụ Thuê Sân Cầu Lông</h4>
+                                <p class="project-desc">Hệ thống đặt sân cầu lông hiện đại, tìm kiếm khung giờ trống,
+                                    dịch vụ đi kèm và tính phí.</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">HTML5</span>
+                                    <span class="tech-tag">CSS3</span>
+                                    <span class="tech-tag">JS App</span>
+                                </div>
+                            </div>
+                            <div class="project-action">
+                                <span>Khám phá dự án</span>
+                                <i data-lucide="arrow-right"></i>
+                            </div>
+                        </a>
+
+                        <!-- Assignment 7 -->
+                        <a href="thegioididong/index.html" class="glass-box project-card" data-index="6">
+                            <div class="card-top">
+                                <span class="project-num">07</span>
+                                <span class="project-badge badge-premium">Premium</span>
+                            </div>
+                            <div class="project-icon-box">
+                                <i data-lucide="smartphone"></i>
+                            </div>
+                            <div class="project-info">
+                                <h4 class="project-title">Thế Giới Di Động Clone</h4>
+                                <p class="project-desc">Bản sao giao diện website bán lẻ Thế Giới Di Động cực kỳ đầy đủ,
+                                    chuẩn responsive.</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">HTML5</span>
+                                    <span class="tech-tag">CSS3</span>
+                                    <span class="tech-tag">UI Clone</span>
+                                </div>
+                            </div>
+                            <div class="project-action">
+                                <span>Khám phá dự án</span>
+                                <i data-lucide="arrow-right"></i>
+                            </div>
+                        </a>
+
+                    </div>
+                </section>
+
+                <!-- Interactive Command Terminal Widget -->
+                <section class="slide-up-in delay-4" id="terminalSection">
+                    <div class="glass-box terminal-card">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="term-dot dot-red"></span>
+                                <span class="term-dot dot-yellow"></span>
+                                <span class="term-dot dot-green"></span>
+                            </div>
+                            <span class="terminal-title">phuc-terminal-v4.sh</span>
+                            <div style="width: 42px;"></div> <!-- Spacer -->
+                        </div>
+                        <div class="terminal-body" id="terminalBody">
+                            <div class="terminal-output" id="terminalOutput"></div>
+                            <div class="terminal-input-line">
+                                <span class="terminal-prompt">
+                                    <span class="terminal-prompt-user">guest</span>@phuc-pc:~$
+                                </span>
+                                <input type="text" class="terminal-input" id="terminalInput"
+                                    placeholder="Gõ 'help' để xem danh sách lệnh..." autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+
+        <!-- Dashboard Footer -->
+        <footer class="dashboard-footer slide-up-in delay-5">
+            <div class="footer-inner">
+                <div class="footer-meta-wrap">
+                    <span class="footer-name">Đặng Nguyễn Duy Phúc</span>
+                    <span class="footer-sep">•</span>
+                    <span class="footer-badge">DA25TTC</span>
+                    <span class="footer-sep">•</span>
+                    <span class="footer-class">Hệ thống bài tập nâng cao v4</span>
+                </div>
+                <div class="footer-clock" id="currentTime"></div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- WEBOS SANDBOX PROJECT VIEWER MODAL (IFRAME EMULATOR) -->
+    <div class="sandbox-modal" id="sandboxModal">
+        <div class="sandbox-window" id="sandboxWindow">
+            <div class="sandbox-chrome">
+                <div class="chrome-controls">
+                    <div class="chrome-dots">
+                        <span class="chrome-dot close" id="sandboxCloseBtn" title="Đóng cửa sổ"></span>
+                        <span class="chrome-dot minimize" id="sandboxMinBtn" title="Thu nhỏ"></span>
+                        <span class="chrome-dot maximize" id="sandboxMaxBtn" title="Xem Toàn Màn Hình"></span>
+                    </div>
+                    <button class="chrome-nav-btn" id="sandboxBackBtn" title="Quay lại"><i
+                            data-lucide="chevron-left"></i></button>
+                    <button class="chrome-nav-btn" id="sandboxRefreshBtn" title="Tải lại dự án"><i
+                            data-lucide="refresh-cw"></i></button>
+                </div>
+
+                <div class="chrome-url-bar">
+                    <i data-lucide="lock"></i>
+                    <span class="chrome-url-text"
+                        id="chromeUrlText">https://phuc-dashboard.dev/assignments/index.html</span>
+                </div>
+
+                <div class="chrome-controls">
+                    <div class="chrome-responsive-toggles">
+                        <button class="resp-toggle-btn active" data-resp-view="desktop" title="Chế độ Desktop"><i
+                                data-lucide="monitor"></i></button>
+                        <button class="resp-toggle-btn" data-resp-view="tablet" title="Chế độ Máy Tính Bảng"><i
+                                data-lucide="tablet"></i></button>
+                        <button class="resp-toggle-btn" data-resp-view="mobile" title="Chế độ Điện Thoại"><i
+                                data-lucide="smartphone"></i></button>
+                    </div>
+                    <button class="chrome-nav-btn" id="sandboxOpenNewTab" title="Mở trang mới độc lập"><i
+                            data-lucide="external-link"></i></button>
+                </div>
+            </div>
+
+            <div class="sandbox-body">
+                <!-- Loading Indicator Overlay -->
+                <div class="sandbox-loader" id="sandboxLoader">
+                    <div class="sandbox-spinner"></div>
+                    <span class="sandbox-loader-text">Đang tải tài nguyên bài tập...</span>
+                </div>
+                <div class="sandbox-iframe-wrap">
+                    <iframe src="" class="sandbox-iframe" id="sandboxIframe"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page entry loader transition -->
+    <div class="page-transition" id="pageTransition">
+        <div class="transition-loader"></div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js?v=4"></script>
+</body>
+
+</html>

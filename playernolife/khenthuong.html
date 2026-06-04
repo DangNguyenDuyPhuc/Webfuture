@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khen Thưởng - Phúc Bé Tí</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="cosmos-theme.css" rel="stylesheet">
+  <style>
+    .award-card {
+      border-left: 4px solid var(--cosmos-gold);
+      border-radius: 14px;
+      background: rgba(10, 20, 45, 0.6);
+      padding: 24px;
+      margin-bottom: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .award-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.25);
+    }
+
+    .award-icon {
+      width: 55px;
+      height: 55px;
+      background: linear-gradient(135deg, var(--cosmos-purple), var(--cosmos-gold));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 22px;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+      flex-shrink: 0;
+    }
+
+    .award-card h5 {
+      color: var(--cosmos-gold);
+    }
+
+    .award-card p {
+      color: var(--cosmos-text-muted);
+    }
+
+    .stat-box {
+      background: rgba(10, 20, 45, 0.6);
+      border: 1px solid var(--cosmos-border);
+      border-radius: 14px;
+      padding: 28px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .stat-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(123, 47, 247, 0.4);
+    }
+
+    .stat-box h3 {
+      color: var(--cosmos-gold);
+      font-size: 2.8rem;
+      font-weight: 800;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    }
+
+    .stat-box p {
+      color: var(--cosmos-text-muted);
+      margin: 0;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body data-cinematic="golden">
+  <div id="warp-overlay" class="warp-overlay"></div>
+  <nav class="navbar navbar-expand-lg navbar-dark py-3">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-4" href="index.html">Phúc Bé Tí</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="home.html">Trang Chủ</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">Hồ Sơ CV</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="gioithieubthan.html">Giới Thiệu</a></li>
+              <li><a class="dropdown-item" href="trainghiem.html">Trải Nghiệm</a></li>
+              <li><a class="dropdown-item" href="kinhnghiem.html">Kinh Nghiệm</a></li>
+              <li><a class="dropdown-item" href="hoatdong.html">Hoạt Động</a></li>
+              <li><a class="dropdown-item active" href="khenthuong.html">Khen Thưởng</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="https://blog.fbaio.org/">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="lifestyle.html">Lifestyle</a></li>
+          <li class="nav-item"><a class="nav-link" href="workspace.html">Workspace</a></li>
+          <li class="nav-item"><a class="nav-link" href="snippets.html">Snippets</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <section class="page-title p-5 my-5 scroll-reveal">
+      <h1 class="display-4 fw-bold"><i class="fas fa-trophy me-3"></i>Khen Thưởng &amp; Thành Tựu</h1>
+    </section>
+    <section class="section p-4 p-md-5 mb-5">
+      <!-- Stats -->
+      <div class="row g-4 mb-5 scroll-reveal">
+        <div class="col-6 col-md-3">
+          <div class="stat-box">
+            <h3>2+</h3>
+            <p>Khen Thưởng</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-box">
+            <h3>2+</h3>
+            <p>Dự Án</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-box">
+            <h3>50+</h3>
+            <p>Người Hài Lòng</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-box">
+            <h3>1+</h3>
+            <p>Năm Kinh Nghiệm</p>
+          </div>
+        </div>
+      </div>
+      <!-- Awards -->
+      <h2 class="mb-4" style="color:var(--cosmos-cyan);font-family:'Orbitron',sans-serif;font-size:1.5rem">🏆 Giải
+        Thưởng Nổi Bật</h2>
+      <div class="row g-4">
+        <div class="col-md-6 scroll-reveal">
+          <div class="award-card">
+            <div class="d-flex gap-3">
+              <div class="award-icon"><i class="fas fa-certificate"></i></div>
+              <div>
+                <h5 class="fw-bold">Giấy Tuyên Dương — CLB Thanh Niên Tình Nguyện</h5>
+                <p class="mb-1 text-info">Nhiệm kỳ 2024 - 2025</p>
+                <div class="my-3 img-zoom-container">
+                  <img src="tuyenduong.jpg"
+                    class="img-fluid rounded border border-secondary shadow-sm award-img" alt="Giấy Tuyên Dương">
+                </div>
+                <p style="font-size:1.05rem;line-height:1.7; font-style: italic;">
+                  "Tấm bằng khen không chỉ ghi nhận những đóng góp tích cực trong các hoạt động tình nguyện, mà còn là
+                  biểu tượng của tinh thần xung kích và nhiệt huyết tuổi trẻ. Đây là minh chứng cho hành trình cống hiến
+                  thầm lặng nhưng đầy rạng rỡ của Đặng Nguyễn Duy Phúc tại Đoàn Trường Y Dược."
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 scroll-reveal">
+          <div class="award-card">
+            <div class="d-flex gap-3">
+              <div class="award-icon"><i class="fas fa-star"></i></div>
+              <div>
+                <h5 class="fw-bold">Khoảnh Khắc Vinh Quang</h5>
+                <p class="mb-1 text-warning">Thành Tựu 2025</p>
+                <div class="my-3 img-zoom-container">
+                  <img src="checkintvugiai2.jpg"
+                    class="img-fluid rounded border border-secondary shadow-sm award-img" alt="Thành tựu nổi bật">
+                </div>
+                <p style="font-size:1.05rem;line-height:1.7; font-style: italic;">
+                  "Một dấu ấn rực rỡ khác trong hành trình chinh phục những đỉnh cao mới. Bức ảnh lưu giữ trọn vẹn niềm
+                  tự hào và sự hạnh phúc khi những nỗ lực bền bỉ cuối cùng đã được đền đáp xứng đáng. Đây không chỉ là
+                  một thành tích, mà là nguồn động lực to lớn để tiếp tục vươn xa hơn nữa trên con đường sự nghiệp."
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p class="mb-0 fs-6"><strong>© 2025 Phúc Bé Tí.</strong> Tất cả quyền được bảo lưu.</p>
+    </div>
+  </footer>
+
+  <!-- Modal phóng to ảnh -->
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content"
+        style="background: rgba(10, 20, 45, 0.95); border: 1px solid var(--cosmos-gold); backdrop-filter: blur(10px);">
+        <div class="modal-header" style="border-bottom: 1px solid rgba(255, 215, 0, 0.2);">
+          <h5 class="modal-title text-warning" id="modalTitle">Chi tiết khen thưởng</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center p-0">
+          <img src="" id="modalImage" class="img-fluid" style="max-height: 85vh;">
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="mouse-effect.js"></script>
+  <script src="cinematic-bg.js"></script>
+  <script src="cosmos-theme.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const images = document.querySelectorAll('.award-img');
+      const modalImage = document.getElementById('modalImage');
+      const modalTitle = document.getElementById('modalTitle');
+      const imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+
+      images.forEach(img => {
+        img.addEventListener('click', function () {
+          modalImage.src = this.src;
+          const cardTitle = this.closest('.award-card').querySelector('h5').innerText;
+          modalTitle.innerText = cardTitle;
+          imageModal.show();
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

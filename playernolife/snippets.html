@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Snippets - Phúc Bé Tí</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="cosmos-theme.css" rel="stylesheet">
+  <style>
+    .snippet-card {
+      background: rgba(5,10,24,0.9);
+      border: 1px solid var(--cosmos-border);
+      border-radius: 14px;
+      margin-bottom: 24px;
+      overflow: hidden;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .snippet-card:hover {
+      box-shadow: 0 0 30px rgba(123,47,247,0.25);
+      transform: translateY(-3px);
+    }
+    .snippet-header {
+      background: rgba(123,47,247,0.15);
+      border-bottom: 1px solid var(--cosmos-border);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .snippet-header span { color: var(--cosmos-text); font-weight: 600; font-size: 1rem; }
+    .snippet-body { padding: 20px; }
+    .snippet-body pre { margin: 0; font-size: 0.95rem; line-height: 1.6; color: #cdd6f4; }
+    .snippet-body code { background: transparent; color: inherit; }
+    .badge.bg-info    { background: rgba(0,212,255,0.25) !important; color: var(--cosmos-cyan) !important; }
+    .badge.bg-warning { background: rgba(255,215,0,0.2)  !important; color: var(--cosmos-gold) !important; }
+    .badge.bg-success { background: rgba(72,199,142,0.2) !important; color: #48c78e !important; }
+    .badge.bg-primary { background: rgba(123,47,247,0.25)!important; color: var(--cosmos-purple) !important; }
+    .badge.bg-danger  { background: rgba(255,110,199,0.2)!important; color: var(--cosmos-pink) !important; }
+  </style>
+</head>
+<body data-cinematic="neural">
+  <div id="warp-overlay" class="warp-overlay"></div>
+  <nav class="navbar navbar-expand-lg navbar-dark py-3">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-4" href="index.html">Phúc Bé Tí</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="home.html">Trang Chủ</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Hồ Sơ CV</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="gioithieubthan.html">Giới Thiệu</a></li>
+              <li><a class="dropdown-item" href="trainghiem.html">Trải Nghiệm</a></li>
+              <li><a class="dropdown-item" href="kinhnghiem.html">Kinh Nghiệm</a></li>
+              <li><a class="dropdown-item" href="hoatdong.html">Hoạt Động</a></li>
+              <li><a class="dropdown-item" href="khenthuong.html">Khen Thưởng</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="lifestyle.html">Lifestyle</a></li>
+          <li class="nav-item"><a class="nav-link" href="workspace.html">Workspace</a></li>
+          <li class="nav-item"><a class="nav-link active" href="snippets.html">Snippets</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <section class="page-title p-5 my-5 scroll-reveal">
+      <h1 class="display-4 fw-bold"><i class="fas fa-code-branch me-3"></i>Code Snippets</h1>
+    </section>
+
+    <section class="section p-4 p-md-5 mb-5">
+      <p class="mb-4" style="color:var(--cosmos-text-muted);font-size:1.05rem">Những đoạn mã hữu ích mà tôi thường xuyên sử dụng trong các dự án.</p>
+
+      <div class="snippet-card scroll-reveal">
+        <div class="snippet-header">
+          <span><i class="fab fa-css3-alt me-2" style="color:var(--cosmos-cyan)"></i>Căn giữa phần tử với CSS Flexbox</span>
+          <span class="badge bg-info">CSS</span>
+        </div>
+        <div class="snippet-body"><pre><code>.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}</code></pre></div>
+      </div>
+
+      <div class="snippet-card scroll-reveal">
+        <div class="snippet-header">
+          <span><i class="fab fa-js-square me-2" style="color:var(--cosmos-gold)"></i>Debounce Function — Tối ưu hiệu năng</span>
+          <span class="badge bg-warning">JavaScript</span>
+        </div>
+        <div class="snippet-body"><pre><code>function debounce(func, delay = 300) {
+    let timer;
+    return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => func.apply(this, args), delay);
+    };
+}
+
+const search = debounce((query) => {
+    fetch(`/api/search?q=${query}`).then(r => r.json());
+}, 500);</code></pre></div>
+      </div>
+
+      <div class="snippet-card scroll-reveal">
+        <div class="snippet-header">
+          <span><i class="fab fa-python me-2" style="color:#48c78e"></i>Flask REST API — CRUD cơ bản</span>
+          <span class="badge bg-success">Python</span>
+        </div>
+        <div class="snippet-body"><pre><code>from flask import Flask, jsonify, request
+
+app = Flask(__name__)
+tasks = []
+
+@app.route('/api/tasks', methods=['GET'])
+def get_tasks():
+    return jsonify(tasks), 200
+
+@app.route('/api/tasks', methods=['POST'])
+def create_task():
+    data = request.get_json()
+    task = {'id': len(tasks) + 1, 'title': data['title'], 'done': False}
+    tasks.append(task)
+    return jsonify(task), 201
+
+if __name__ == '__main__':
+    app.run(debug=True, port=5000)</code></pre></div>
+      </div>
+
+      <div class="snippet-card scroll-reveal">
+        <div class="snippet-header">
+          <span><i class="fas fa-database me-2" style="color:var(--cosmos-purple)"></i>SQL — Truy vấn phân tích doanh thu</span>
+          <span class="badge bg-primary">SQL</span>
+        </div>
+        <div class="snippet-body"><pre><code>SELECT
+    DATE_FORMAT(o.created_at, '%Y-%m') AS thang,
+    COUNT(DISTINCT o.id)               AS so_don_hang,
+    SUM(oi.quantity * oi.price)        AS tong_doanh_thu
+FROM orders o
+JOIN order_items oi ON o.id = oi.order_id
+WHERE o.status = 'completed'
+GROUP BY thang
+ORDER BY thang DESC;</code></pre></div>
+      </div>
+
+      <div class="snippet-card scroll-reveal">
+        <div class="snippet-header">
+          <span><i class="fab fa-react me-2" style="color:var(--cosmos-cyan)"></i>React Hook — Custom useFetch</span>
+          <span class="badge bg-info">React</span>
+        </div>
+        <div class="snippet-body"><pre><code>import { useState, useEffect } from 'react';
+
+function useFetch(url) {
+    const [data, setData]       = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError]     = useState(null);
+
+    useEffect(() => {
+        const controller = new AbortController();
+        fetch(url, { signal: controller.signal })
+            .then(res => res.json())
+            .then(setData)
+            .catch(setError)
+            .finally(() => setLoading(false));
+        return () => controller.abort();
+    }, [url]);
+
+    return { data, loading, error };
+}</code></pre></div>
+      </div>
+
+      <div class="snippet-card scroll-reveal">
+        <div class="snippet-header">
+          <span><i class="fab fa-node-js me-2" style="color:#48c78e"></i>Node.js — JWT Authentication Middleware</span>
+          <span class="badge bg-success">Node.js</span>
+        </div>
+        <div class="snippet-body"><pre><code>const jwt = require('jsonwebtoken');
+const SECRET = process.env.JWT_SECRET;
+
+function authMiddleware(req, res, next) {
+    const token = req.headers.authorization?.split(' ')[1];
+    if (!token) return res.status(401).json({ error: 'Unauthorized' });
+    try {
+        req.user = jwt.verify(token, SECRET);
+        next();
+    } catch {
+        return res.status(403).json({ error: 'Token expired' });
+    }
+}</code></pre></div>
+      </div>
+
+      <div class="snippet-card scroll-reveal">
+        <div class="snippet-header">
+          <span><i class="fab fa-css3-alt me-2" style="color:var(--cosmos-cyan)"></i>CSS Glassmorphism — Hiệu ứng kính mờ</span>
+          <span class="badge bg-info">CSS</span>
+        </div>
+        <div class="snippet-body"><pre><code>.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+.glass-card:hover { transform: translateY(-5px); }</code></pre></div>
+      </div>
+
+      <div class="snippet-card scroll-reveal">
+        <div class="snippet-header">
+          <span><i class="fab fa-git-alt me-2" style="color:var(--cosmos-pink)"></i>Git — Quy trình Conventional Commits</span>
+          <span class="badge bg-danger">Git</span>
+        </div>
+        <div class="snippet-body"><pre><code># Tạo nhánh từ develop
+git checkout develop && git pull origin develop
+git checkout -b feature/ten-tinh-nang
+
+# Commit theo Conventional Commits
+git commit -m "feat: thêm đăng nhập OAuth2"
+git commit -m "fix: sửa lỗi avatar trên mobile"
+git commit -m "refactor: tối ưu query database"
+
+# Merge và dọn dẹp
+git checkout develop
+git merge --no-ff feature/ten-tinh-nang
+git push origin develop</code></pre></div>
+      </div>
+
+      <div class="snippet-card scroll-reveal">
+        <div class="snippet-header">
+          <span><i class="fab fa-css3-alt me-2" style="color:var(--cosmos-cyan)"></i>CSS — Gradient Text Animation</span>
+          <span class="badge bg-info">CSS</span>
+        </div>
+        <div class="snippet-body"><pre><code>.gradient-text {
+    background: linear-gradient(
+        90deg, #ff6b6b, #ffd93d, #6bcb77, #4d96ff, #ff6b6b
+    );
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 3s linear infinite;
+    font-weight: 800;
+}
+@keyframes shimmer {
+    0%   { background-position: 0% center; }
+    100% { background-position: 300% center; }
+}</code></pre></div>
+      </div>
+
+    </section>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p class="mb-0 fs-6"><strong>© 2025 Phúc Bé Tí.</strong> Tất cả quyền được bảo lưu.</p>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="mouse-effect.js"></script>
+  <script src="cinematic-bg.js"></script>
+  <script src="cosmos-theme.js"></script>
+</body>
+</html>

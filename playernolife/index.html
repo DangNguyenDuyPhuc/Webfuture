@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phúc Bé Tí — Chào Mừng</title>
+  <meta name="description"
+    content="Portfolio cá nhân của Phúc Bé Tí — khám phá hành trình, kinh nghiệm và chia sẻ thú vị.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+      background: #000;
+      color: #fff;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* ─── VIDEO BACKGROUND ─── */
+    .video-container {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: translateY(17%);
+      opacity: 0;
+    }
+
+    /* ─── LIQUID GLASS ─── */
+    .liquid-glass {
+      background: rgba(255, 255, 255, 0.01);
+      background-blend-mode: luminosity;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border: none;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .liquid-glass::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1.4px;
+      background: linear-gradient(180deg,
+          rgba(255, 255, 255, 0.45) 0%,
+          rgba(255, 255, 255, 0.15) 20%,
+          rgba(255, 255, 255, 0) 40%,
+          rgba(255, 255, 255, 0) 60%,
+          rgba(255, 255, 255, 0.15) 80%,
+          rgba(255, 255, 255, 0.45) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    /* ─── LAYOUT ─── */
+    .splash-wrapper {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      z-index: 1;
+    }
+
+    /* ─── NAVBAR ─── */
+    .splash-nav {
+      position: relative;
+      z-index: 20;
+      padding: 24px 24px;
+    }
+
+    .splash-nav-inner {
+      border-radius: 9999px;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .nav-logo svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .nav-logo span {
+      font-weight: 600;
+      font-size: 1.125rem;
+      color: #fff;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-text {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .btn-text:hover {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .btn-glass {
+      border-radius: 9999px;
+      padding: 8px 24px;
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* ─── HERO CONTENT ─── */
+    .splash-hero {
+      position: relative;
+      z-index: 10;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px;
+      text-align: center;
+      transform: translateY(-20%);
+    }
+
+    .splash-hero h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      color: #fff;
+      margin-bottom: 32px;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      line-height: 1.1;
+    }
+
+    .hero-form-container {
+      max-width: 560px;
+      width: 100%;
+    }
+
+    .hero-form-container>*+* {
+      margin-top: 16px;
+    }
+
+    /* Email input bar */
+    .email-bar {
+      border-radius: 9999px;
+      padding: 8px 8px 8px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .email-bar input {
+      background: transparent;
+      border: none;
+      outline: none;
+      flex: 1;
+      color: #fff;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    .email-bar input::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .email-bar button {
+      background: #fff;
+      border: none;
+      border-radius: 9999px;
+      padding: 12px;
+      color: #000;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.3s;
+    }
+
+    .email-bar button:hover {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .email-bar button svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .hero-subtitle {
+      color: #fff;
+      font-size: 0.875rem;
+      line-height: 1.6;
+      padding: 0 16px;
+      opacity: 0.8;
+    }
+
+    /* Explore button */
+    .explore-btn-wrapper {
+      display: flex;
+      justify-content: center;
+      padding-top: 16px;
+    }
+
+    .btn-explore {
+      border-radius: 9999px;
+      padding: 12px 32px;
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.3s;
+    }
+
+    .btn-explore:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .btn-explore svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.3s;
+    }
+
+    .btn-explore:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* ─── SOCIAL FOOTER ─── */
+    .splash-footer {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      padding-bottom: 48px;
+    }
+
+    .social-btn {
+      border-radius: 9999px;
+      padding: 16px;
+      color: rgba(255, 255, 255, 0.8);
+      cursor: pointer;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.3s, background 0.3s;
+    }
+
+    .social-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .social-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* ─── WARP OVERLAY ─── */
+    .warp-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      pointer-events: none;
+      background: transparent;
+      overflow: hidden;
+    }
+
+    .warp-overlay canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .splash-hero h1 {
+        white-space: normal;
+        font-size: 2.2rem;
+      }
+    }
+
+    /* ─── MUSIC TOGGLE ─── */
+    .music-toggle {
+      position: fixed;
+      bottom: 32px;
+      left: 32px;
+      z-index: 1000;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #fff;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .music-toggle:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: scale(1.1) rotate(5deg);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .music-toggle i {
+      font-size: 1.2rem;
+      filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+    }
+
+    /* Animation for playing state */
+    .music-toggle.playing {
+      animation: pulse-music 2s infinite;
+    }
+
+    @keyframes pulse-music {
+      0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2); }
+      70% { box-shadow: 0 0 0 15px rgba(255, 255, 255, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Warp Overlay -->
+  <div id="warp-overlay" class="warp-overlay"></div>
+
+  <!-- Video Background -->
+  <div class="video-container">
+    <video id="bg-video"
+      src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_115001_bcdaa3b4-03de-47e7-ad63-ae3e392c32d4.mp4"
+      muted playsinline></video>
+  </div>
+
+  <!-- Splash Wrapper -->
+  <div class="splash-wrapper">
+
+    <!-- Navbar -->
+    <nav class="splash-nav">
+      <div class="splash-nav-inner">
+        <div class="nav-left">
+          <a href="#" class="nav-logo">
+            <!-- Globe Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+              <path d="M2 12h20"></path>
+            </svg>
+            <span>Phúc Bé Tí</span>
+          </a>
+          <div class="nav-links">
+            <a href="home.html">Trang Chủ</a>
+            <a href="https://blog.fbaio.org/">Blog</a>
+            <a href="lifestyle.html">Lifestyle</a>
+          </div>
+        </div>
+        <div class="nav-right">
+          <a href="snippets.html" class="btn-text" style="text-decoration:none">Snippets</a>
+          <a href="gioithieubthan.html" class="btn-glass liquid-glass" style="text-decoration:none">Hồ Sơ CV</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Content -->
+    <main class="splash-hero">
+      <h1>Mỗi chi tiết đều mang một câu chuyện</h1>
+
+      <div class="hero-form-container">
+        <!-- Subtitle -->
+        <p class="hero-subtitle">
+          Khám phá hành trình, kinh nghiệm và những chia sẻ thú vị. Hãy cùng tôi bước vào thế giới đầy cảm hứng và sáng
+          tạo.
+        </p>
+
+        <!-- Explore Button -->
+        <div class="explore-btn-wrapper">
+          <a href="home.html" id="btn-explore" class="btn-explore liquid-glass">
+            Khám Phá Portfolio
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <script>
+    // ─── VIDEO FADE SYSTEM (requestAnimationFrame-based) ───
+    (function () {
+      const video = document.getElementById('bg-video');
+      let rafId = null;
+      let fadingOut = false;
+      let currentOpacity = 0;
+
+      function animateFade(targetOpacity, duration, callback) {
+        if (rafId) cancelAnimationFrame(rafId);
+        const startTime = performance.now();
+        const startOpacity = currentOpacity;
+
+        function step(now) {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          currentOpacity = startOpacity + (targetOpacity - startOpacity) * progress;
+          video.style.opacity = currentOpacity;
+
+          if (progress < 1) {
+            rafId = requestAnimationFrame(step);
+          } else {
+            rafId = null;
+            if (callback) callback();
+          }
+        }
+        rafId = requestAnimationFrame(step);
+      }
+
+      video.addEventListener('loadedmetadata', function () {
+        video.play().then(() => animateFade(1, 500));
+      });
+
+      video.addEventListener('timeupdate', function () {
+        if (!video.duration) return;
+        const remaining = video.duration - video.currentTime;
+        if (remaining <= 0.55 && !fadingOut && !video.paused) {
+          fadingOut = true;
+          animateFade(0, 500);
+        }
+      });
+
+      video.addEventListener('ended', function () {
+        video.style.opacity = '0';
+        currentOpacity = 0;
+        fadingOut = false;
+
+        setTimeout(function () {
+          video.currentTime = 0;
+          video.play().then(() => animateFade(1, 500));
+        }, 100);
+      });
+    })();
+
+    // ─── WARP SPEED TRANSITION ───
+    (function () {
+      const overlay = document.getElementById('warp-overlay');
+      if (!overlay) return;
+      const canvas = document.createElement('canvas');
+      overlay.appendChild(canvas);
+      const ctx = canvas.getContext('2d');
+      let W, H, stars = [], animId = null;
+
+      function resize() {
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      function makeStars(n) {
+        stars = [];
+        for (let i = 0; i < n; i++) {
+          stars.push({
+            x: Math.random() * W - W / 2,
+            y: Math.random() * H - H / 2,
+            z: Math.random() * W,
+            pz: Math.random() * W
+          });
+        }
+      }
+      makeStars(500);
+
+      function drawWarp(progress, isDeparting) {
+        const speed = 2 + (progress * 150);
+        const bgAlpha = 0.2 + progress * 0.8;
+
+        ctx.fillStyle = 'rgba(5,10,24,' + bgAlpha + ')';
+        ctx.fillRect(0, 0, W, H);
+
+        stars.forEach(function (s) {
+          s.pz = s.z;
+          s.z -= speed;
+          if (s.z <= 0) {
+            s.x = Math.random() * W - W / 2;
+            s.y = Math.random() * H - H / 2;
+            s.z = W;
+            s.pz = W;
+          }
+          var sx = (s.x / s.z) * W + W / 2;
+          var sy = (s.y / s.z) * H + H / 2;
+          var px = (s.x / s.pz) * W + W / 2;
+          var py = (s.y / s.pz) * H + H / 2;
+
+          var size = Math.max(0.5, (1 - s.z / W) * 3);
+          var starAlpha = (1 - s.z / W);
+          if (!isDeparting) starAlpha *= progress;
+
+          ctx.globalAlpha = Math.max(0, Math.min(1, starAlpha));
+          ctx.lineWidth = size;
+          var dist = Math.sqrt(Math.pow(sx - W / 2, 2) + Math.pow(sy - H / 2, 2));
+          var hue = dist < 250 ? 280 : 190;
+          ctx.strokeStyle = 'hsl(' + hue + ', 100%, ' + (60 + progress * 40) + '%)';
+          ctx.beginPath();
+          ctx.moveTo(px, py);
+          ctx.lineTo(sx, sy);
+          ctx.stroke();
+        });
+        ctx.globalAlpha = 1;
+      }
+
+      var start = null, duration = 800, targetUrl = null, mode = 'departing';
+
+      function animate(ts) {
+        if (!start) start = ts;
+        var elapsed = ts - start;
+        var rawProgress = Math.min(elapsed / duration, 1);
+
+        var easeInQuart = function (t) { return t * t * t * t; };
+
+        ctx.clearRect(0, 0, W, H);
+
+        if (mode === 'departing') {
+          var progress = easeInQuart(rawProgress);
+          drawWarp(progress, true);
+
+          if (rawProgress >= 1 && !window._isWarpNavigating) {
+            window._isWarpNavigating = true;
+            sessionStorage.setItem('cosmosWarping', 'true');
+            if (targetUrl) window.location.href = targetUrl;
+          }
+          animId = requestAnimationFrame(animate);
+        }
+      }
+
+      window._warpTo = function (url) {
+        targetUrl = url;
+        mode = 'departing';
+        window._isWarpNavigating = false;
+        overlay.style.pointerEvents = 'all';
+        overlay.style.background = 'transparent';
+        overlay.style.opacity = '1';
+        start = null;
+        makeStars(500);
+        if (animId) cancelAnimationFrame(animId);
+        animId = requestAnimationFrame(animate);
+      };
+
+    })();
+  </script>
+
+  <!-- SoundCloud Player (Gần như tàng hình để tránh bị trình duyệt chặn) -->
+  <div style="position: fixed; bottom: -500px; right: -500px; width: 300px; height: 100px; opacity: 0.01; pointer-events: none; z-index: -1;">
+    <iframe 
+      id="sc-player"
+      width="100%" 
+      height="100" 
+      scrolling="no" 
+      frameborder="no" 
+      allow="autoplay" 
+      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/quyen-ng-c/canh-dong-yeu-thuong-trung-quan-idol-lyrics-video&auto_play=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false">
+    </iframe>
+  </div>
+
+  <!-- Music Control Button -->
+  <div id="music-toggle" class="music-toggle" title="Phát/Tạm dừng nhạc">
+    <i class="fas fa-play"></i>
+  </div>
+
+  <!-- SoundCloud Widget API -->
+  <script src="https://w.soundcloud.com/player/api.js"></script>
+  <script>
+    const widgetIframe = document.getElementById('sc-player');
+    const widget = SC.Widget(widgetIframe);
+    const musicToggle = document.getElementById('music-toggle');
+    const musicIcon = musicToggle.querySelector('i');
+    let isPlaying = false;
+
+    widget.bind(SC.Widget.Events.READY, function() {
+      // Thiết lập âm lượng tối đa
+      widget.setVolume(100);
+    });
+
+    widget.bind(SC.Widget.Events.PLAY, function() {
+      isPlaying = true;
+      musicIcon.className = 'fas fa-pause';
+      musicToggle.classList.add('playing');
+    });
+
+    widget.bind(SC.Widget.Events.PAUSE, function() {
+      isPlaying = false;
+      musicIcon.className = 'fas fa-play';
+      musicToggle.classList.remove('playing');
+    });
+
+    widget.bind(SC.Widget.Events.FINISH, function() {
+      // Tự động phát lại khi hết bài
+      widget.play();
+    });
+
+    // Xử lý nút bấm nhạc
+    musicToggle.addEventListener('click', function() {
+      widget.toggle();
+    });
+
+    // Đánh thức âm thanh và xử lý chuyển trang khi click vào trang
+    document.addEventListener('click', function(e) {
+      if (!isPlaying) {
+        widget.play();
+      }
+
+      var a = e.target.closest('a[href]');
+      if (!a) return;
+      var href = a.getAttribute('href');
+      if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || a.target === '_blank') return;
+      e.preventDefault();
+      if (window._warpTo) window._warpTo(href);
+    }, { once: false });
+  </script>
+</body>
+
+</html>
