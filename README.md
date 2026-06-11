@@ -1,106 +1,95 @@
-# 📚 Hệ thống Đăng ký Dự thi Tốt nghiệp THPT
+# 🚀 Webfuture - Portfolio Hub & Dự án Web Frontend
 
-> Giao diện đăng nhập cho hệ thống đăng ký dự thi tốt nghiệp THPT — Bộ Giáo dục và Đào tạo.
+Chào mừng bạn đến với **Webfuture Hub** — Trang danh bạ dự án và portfolio cá nhân chứa các sản phẩm bài tập Frontend của học viên **Đặng Nguyễn Duy Phúc** (Lớp DA25TTC). 
 
-![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+Hệ thống được thiết kế theo phong cách tối giản (Minimalist), hiện đại, tải nhanh, trực quan và tương thích hoàn hảo trên mọi thiết bị di động cũng như máy tính.
 
 ---
 
-## 📖 Giới thiệu
+## 📂 Danh sách 8 dự án Frontend thành phần
 
-Đây là giao diện trang đăng nhập cho hệ thống **Đăng ký dự thi tốt nghiệp THPT** của Bộ Giáo dục và Đào tạo. Trang web được thiết kế với giao diện hiện đại, thân thiện với người dùng, lấy cảm hứng từ hình ảnh cuốn sách mở với hai trang: trang đăng nhập và trang thông báo.
+Dưới đây là chi tiết các bài tập thực hành được tích hợp trực tiếp trong Portfolio:
+
+### 1. 📖 Bài Thơ Quê Hương
+*   **Đường dẫn:** `/baitho/index.html`
+*   **Mô tả:** Trang trình bày bài thơ nghệ thuật cổ điển lãng mạn kết hợp hiệu ứng chữ đẹp mắt và căn chỉnh CSS tinh tế.
+*   **Công nghệ:** HTML5, CSS3, Responsive Layout, Google Fonts.
+
+### 2. 🎵 Trình Phát Nhạc Trực Tuyến
+*   **Đường dẫn:** `/webnhac/index.html`
+*   **Mô tả:** Ứng dụng nghe nhạc trực tuyến với giao diện chơi nhạc sống động, chức năng phát/tạm dừng, chuyển bài, thanh tua thời gian và lưu trữ danh sách phát.
+*   **Công nghệ:** HTML5 Audio API, Vanilla JS (ES6+), CSS Grid/Flexbox, LocalStorage.
+
+### 3. 👤 Trang Giới Thiệu Bản Thân
+*   **Đường dẫn:** `/gioithieubanthan/index.html`
+*   **Mô tả:** Trang portfolio cá nhân thu nhỏ giới thiệu tiểu sử, sở thích, định hướng nghề nghiệp và các kỹ năng kỹ thuật thế mạnh.
+*   **Công nghệ:** HTML5, CSS3 Transitions & Animations, Responsive.
+
+### 4. 🔑 Cổng Đăng Nhập Hệ Thống (Login Portal)
+*   **Đường dẫn:** `/tranglogin/index.html`
+*   **Mô tả:** Form đăng nhập chuẩn bảo mật với tính năng tạo Captcha ngẫu nhiên chống bot, xác thực regex email/mật khẩu, và ẩn/hiện mật khẩu động.
+*   **Công nghệ:** Javascript Form Validation, DOM manipulation, CSS3.
+
+### 5. ✍️ Trang Đăng Ký Dự Thi THPT
+*   **Đường dẫn:** `/trangdangkiduthi/index.html`
+*   **Mô tả:** Form đăng ký dự thi trực tuyến chuyên nghiệp thu thập thông tin thí sinh, các môn thi, nguyện vọng xét tuyển và tải ảnh thẻ lên.
+*   **Công nghệ:** HTML5 Form Inputs, CSS Flexbox, Data Validation.
+
+### 6. 🏸 Hệ Thống Đặt Sân Cầu Lông
+*   **Đường dẫn:** `/thuesancaulong/index.html`
+*   **Mô tả:** Ứng dụng đặt sân trực tuyến: cho phép chọn khung giờ, chọn dịch vụ đi kèm (nước uống, vợt...), tính toán chi phí tức thời và quản lý danh sách đặt sân.
+*   **Công nghệ:** HTML5, CSS3, Javascript (Quản lý trạng thái & Tính toán thuật toán hóa đơn).
+
+### 7. 📱 Thế Giới Di Động Clone
+*   **Đường dẫn:** `/thegioididong/index.html`
+*   **Mô tả:** Bản sao giao diện website bán lẻ Thế Giới Di Động với thanh điều hướng, banner chuyển động (carousel), danh sách sản phẩm và bộ lọc.
+*   **Công nghệ:** HTML5 Semantic elements, CSS Grid, Responsive Design (Desktop, Tablet, Mobile).
+
+### 8. 📊 Hệ Thống Quản Lý Điểm Rèn Luyện
+*   **Đường dẫn:** `/diemrenluyen/index.html`
+*   **Mô tả:** Giao diện chấm điểm và quản lý điểm rèn luyện của sinh viên theo các tiêu chuẩn đánh giá của trường học.
+*   **Công nghệ:** HTML5, CSS3, Javascript dữ liệu bảng biểu.
 
 ---
 
-## ✨ Tính năng
+## 🛠️ Cấu trúc thư mục dự án
 
-- 🔐 **Form đăng nhập** — Nhập Số CCCD/CMND/ĐDCN, mã đăng nhập và mã xác nhận (captcha)
-- 👁️ **Ẩn/hiện mật khẩu** — Nút toggle hiển thị mật khẩu
-- 🔄 **Captcha tự sinh** — Mã captcha ngẫu nhiên 5 ký tự, hỗ trợ làm mới
-- ✅ **Xác thực form** — Kiểm tra dữ liệu nhập trước khi gửi
-- 📢 **Thông báo** — Hiển thị thông tin lịch đăng ký dự thi
-- 🌐 **Đăng nhập qua Cổng DVC Quốc gia** — Nút đăng nhập thay thế
-- 📱 **Responsive** — Tương thích tốt trên cả máy tính và thiết bị di động
-
----
-
-## 🎨 Thiết kế
-
-| Đặc điểm | Chi tiết |
-|---|---|
-| **Layout** | Dạng sách mở (book layout) với 2 trang trái/phải |
-| **Font** | Inter (Google Fonts) |
-| **Màu chủ đạo** | Xanh dương (`#2c5aa0`, `#3a6fc4`) |
-| **Hiệu ứng** | Fade-in, float animation, hover effects |
-| **Responsive** | Chuyển sang layout dọc trên màn hình < 768px |
-
----
-
-## 🚀 Cách sử dụng
-
-### 1. Clone dự án
-
-```bash
-git clone <repository-url>
-cd bai2
+```text
+Webfuture-main/
+├── baitho/               # Dự án 1: Bài thơ quê hương
+├── webnhac/              # Dự án 2: Web nghe nhạc
+├── gioithieubanthan/     # Dự án 3: Trang giới thiệu bản thân
+├── tranglogin/           # Dự án 4: Trang đăng nhập hệ thống
+├── trangdangkiduthi/     # Dự án 5: Form đăng ký dự thi
+├── thuesancaulong/       # Dự án 6: Đặt sân cầu lông
+├── thegioididong/        # Dự án 7: Thế giới di động UI Clone
+├── diemrenluyen/         # Dự án 8: Quản lý điểm rèn luyện
+│
+├── index.html            # Trang chủ Portfolio Hub chính
+├── style.css             # Stylesheet chính (Chủ đề sáng tối giản)
+├── script.js             # Javascript quản lý tương tác và Sandbox Modal
+└── README.md             # Hướng dẫn dự án (Tài liệu này)
 ```
 
-### 2. Mở trực tiếp trong trình duyệt
+---
 
-Mở file `index.html` bằng trình duyệt web bất kỳ (Chrome, Firefox, Edge,...):
+## 💻 Trải nghiệm & Sử dụng cục bộ
 
-```bash
-# Trên Windows
-start index.html
+Để chạy dự án ngay trên máy tính của bạn:
 
-# Hoặc sử dụng Live Server trong VS Code
-```
-
-> **Lưu ý:** Dự án không yêu cầu cài đặt thêm bất kỳ thư viện hay framework nào. Chỉ cần trình duyệt web là có thể chạy.
+1. **Tải mã nguồn:**
+   ```bash
+   git clone https://github.com/DangNguyenDuyPhuc/Webfuture.git
+   ```
+2. **Mở dự án:**
+   * Truy cập vào thư mục `Webfuture-main`.
+   * Mở tệp `index.html` bằng trình duyệt web bất kỳ (Chrome, Edge, Firefox, Safari) để trải nghiệm giao diện Hub.
+   * Ngoài ra, bạn có thể sử dụng extension **Live Server** trên VS Code để chạy dự án ở môi trường local server.
 
 ---
 
-## 📁 Cấu trúc dự án
-
-```
-bai2/
-├── index.html      # Trang đăng nhập chính (HTML + CSS + JS)
-└── README.md       # Tài liệu hướng dẫn
-```
-
----
-
-## 🛠️ Công nghệ sử dụng
-
-- **HTML5** — Cấu trúc trang web ngữ nghĩa
-- **CSS3** — Thiết kế giao diện (inline styles)
-  - Flexbox layout
-  - CSS Animations & Transitions
-  - Linear Gradients
-  - Media Queries (responsive design)
-- **JavaScript (Vanilla)** — Xử lý logic
-  - Sinh captcha ngẫu nhiên
-  - Toggle hiển thị mật khẩu
-  - Xác thực form phía client
-  - Hiệu ứng tương tác input
-
----
-
-## 📋 Yêu cầu hệ thống
-
-- Trình duyệt web hiện đại (Chrome 80+, Firefox 75+, Edge 80+, Safari 13+)
-- Kết nối Internet (để tải font Inter từ Google Fonts)
-
----
-
-## 📄 Giấy phép
-
-Dự án được phát triển phục vụ mục đích học tập và tham khảo.
-
----
-
-<p align="center">
-  <strong>Hotline hỗ trợ: 1800 8000 (nhánh số 2)</strong>
-</p>
+## ✨ Điểm nổi bật về giao diện mới (Redesign)
+*   **Tối giản & Tinh tế:** Loại bỏ hoàn toàn các chuyển động nặng nề, hình nền gif động để tập trung 100% vào việc làm nổi bật thông tin dự án.
+*   **Clean Light Theme:** Giao diện màu trắng kem cao cấp với bóng đổ nhẹ nhàng, đem lại cảm giác dễ chịu khi đọc.
+*   **Hộp cát Trình chiếu (Sandbox Viewer):** Tích hợp iframe trực tiếp trên trang chủ giúp xem nhanh trước các dự án thành phần mà không cần rời khỏi trang chính.
+*   **Responsive hoàn hảo:** Giao diện tự động co giãn tối ưu trên mọi màn hình từ màn hình điện thoại siêu nhỏ tới màn hình lớn.
