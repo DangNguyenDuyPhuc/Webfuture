@@ -20,129 +20,17 @@
 </head>
 
 <body>
-    <!-- Background GIF -->
-    <img src="bg2.gif" alt="" class="bg-image" id="bgImage">
-    <div class="bg-overlay"></div>
-
-    <!-- Animated particles canvas -->
-    <canvas id="particleCanvas"></canvas>
-
-    <!-- Mouse-following glow -->
-    <div class="cursor-glow" id="cursorGlow"></div>
 
     <!-- Main Dashboard Container -->
     <div class="dashboard-wrapper">
         <main class="dashboard-container">
 
-            <!-- LEFT SIDEBAR: PROFILE & CONTROLS -->
-            <aside class="dashboard-sidebar slide-up-in">
-
-                <!-- Student Profile Widget -->
-                <div class="glass-box profile-card">
-                    <div class="profile-avatar-wrap">
-                        <div class="avatar-holo-ring"></div>
-                        <div class="avatar-holo-ring-inner"></div>
-                        <div class="profile-avatar">DP</div>
-                    </div>
-                    <h2 class="profile-name">Đặng Nguyễn Duy Phúc</h2>
-                    <span class="profile-class">LỚP DA25TTC</span>
-
-                    <div class="profile-status">
-                        <span class="status-dot"></span>
-                        <span class="status-text">Đang lập trình</span>
-                    </div>
-
-                    <div class="profile-meta">
-                        <div class="meta-item">
-                            <span class="meta-val" id="metaCount">7/7</span>
-                            <span class="meta-label">Bài tập</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-val">A+</span>
-                            <span class="meta-label">Đánh giá</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-val" id="metaHours">99+</span>
-                            <span class="meta-label">Giờ Code</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Main Navigation Shortcuts -->
-                <div class="glass-box">
-                    <ul class="sidebar-menu">
-                        <li class="menu-item active" id="menuOverview">
-                            <button><i data-lucide="layout-dashboard"></i>Tổng quan Hệ thống</button>
-                        </li>
-                        <li class="menu-item" id="menuTerminal">
-                            <button id="terminalFocusBtn"><i data-lucide="terminal"></i>Bảng điều khiển
-                                Terminal</button>
-                        </li>
-                        <li class="menu-item" id="menuHelp">
-                            <button id="shortcutHelpBtn"><i data-lucide="keyboard"></i>Danh sách Phím tắt</button>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Theme Customizer Hub -->
-                <div class="glass-box control-hub">
-                    <h3 class="section-title"><i data-lucide="palette"></i>Chủ đề Hệ thống</h3>
-                    <div class="theme-picker-grid">
-                        <button class="theme-btn active" data-theme-select="aurora">
-                            <span class="theme-color-dot"></span>Aurora
-                        </button>
-                        <button class="theme-btn" data-theme-select="cyberpunk">
-                            <span class="theme-color-dot"></span>Cyber
-                        </button>
-                        <button class="theme-btn" data-theme-select="eclipse">
-                            <span class="theme-color-dot"></span>Eclipse
-                        </button>
-                        <button class="theme-btn" data-theme-select="terminal">
-                            <span class="theme-color-dot"></span>Matrix
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Lofi Ambient Music Player -->
-                <div class="glass-box music-player-card" id="lofiPlayerCard">
-                    <div class="player-header">
-                        <div class="player-cover" id="playerCover">
-                            <i data-lucide="disc"></i>
-                        </div>
-                        <div class="player-meta">
-                            <div class="track-name" id="trackName">Lofi Radio Chill</div>
-                            <div class="track-artist" id="trackArtist">Phát trực tuyến</div>
-                        </div>
-                        <div class="player-visualizer" id="playerVisualizer">
-                            <span class="vis-bar"></span>
-                            <span class="vis-bar"></span>
-                            <span class="vis-bar"></span>
-                            <span class="vis-bar"></span>
-                            <span class="vis-bar"></span>
-                        </div>
-                    </div>
-                    <div class="player-controls">
-                        <button class="player-btn" id="btnPrev" title="Bài trước"><i
-                                data-lucide="skip-back"></i></button>
-                        <button class="player-btn btn-play-pause" id="btnPlayPause" title="Phát/Tạm dừng"><i
-                                data-lucide="play" id="playIcon"></i></button>
-                        <button class="player-btn" id="btnNext" title="Bài tiếp theo"><i
-                                data-lucide="skip-forward"></i></button>
-                        <div class="player-volume-wrap">
-                            <i data-lucide="volume-2"></i>
-                            <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="50">
-                        </div>
-                    </div>
-                </div>
-
-            </aside>
 
             <!-- RIGHT MAIN PANEL: HEADER, STATS & GRID -->
             <div class="dashboard-main">
 
                 <!-- Dynamic Hero Header -->
-                <header class="glass-box header-hero slide-up-in delay-1">
-                    <div class="aurora-border"></div>
+                <header class="glass-box header-hero">
                     <div class="hero-flex">
                         <div class="hero-text-side">
                             <div class="greeting-pill">
@@ -150,24 +38,19 @@
                                 <span id="greetingText">Xin chào lập trình viên!</span>
                             </div>
                             <h1 class="hero-title">
-                                <span class="title-accent" id="mainTitleText">Danh sách Dự án</span>
-                                <span class="cursor">|</span>
+                                <span class="title-accent" id="mainTitleText">Trung Tâm Dự Án và Bài Tập</span>
                             </h1>
                             <p class="hero-subtitle">Hệ điều hành ảo quản lý và trực quan hóa các dự án, bài tập học tập
                                 nâng cao của sinh viên <strong>Đặng Nguyễn Duy Phúc</strong> lớp
                                 <strong>DA25TTC</strong>.
                             </p>
                         </div>
-                        <div class="hero-deco">
-                            <div class="deco-circle"></div>
-                            <div class="deco-circle-inner"></div>
-                            <div class="deco-hexagon"></div>
-                        </div>
+
                     </div>
                 </header>
 
                 <!-- Premium Stats Center -->
-                <section class="stats-hub slide-up-in delay-2">
+                <section class="stats-hub">
 
                     <!-- Progress Card -->
                     <div class="glass-box stat-box">
@@ -177,9 +60,9 @@
                         </div>
                         <div class="progress-ring-wrap">
                             <svg width="54" height="54">
-                                <circle class="progress-ring-circle" stroke="rgba(255,255,255,0.06)" stroke-width="4"
+                                <circle class="progress-ring-circle" stroke="rgba(0,0,0,0.08)" stroke-width="4"
                                     fill="transparent" r="23" cx="27" cy="27" />
-                                <circle class="progress-ring-circle" id="statCircle" stroke="var(--accent-primary)"
+                                <circle class="progress-ring-circle" id="statCircle" stroke="var(--accent-blue)"
                                     stroke-width="4" stroke-dasharray="144.5" stroke-dashoffset="144.5"
                                     fill="transparent" r="23" cx="27" cy="27" />
                             </svg>
@@ -212,7 +95,7 @@
                 </section>
 
                 <!-- Project Catalog Grid Section -->
-                <section class="slide-up-in delay-3">
+                <section>
                     <div class="section-header">
                         <h3 class="section-main-title"><i data-lucide="folder-open"></i>Bộ sưu tập Dự án</h3>
                         <div class="view-controls">
@@ -227,7 +110,7 @@
                     <div class="project-grid" id="projectGrid">
 
                         <!-- Assignment 1 -->
-                        <a href="bai%20tho/index.html" class="glass-box project-card" data-index="0">
+                        <a href="baitho/index.html" class="glass-box project-card" data-index="0">
                             <div class="card-top">
                                 <span class="project-num">01</span>
                                 <span class="project-badge badge-completed">Hoàn thành</span>
@@ -251,7 +134,7 @@
                         </a>
 
                         <!-- Assignment 2 -->
-                        <a href="web%20nhac/index.html" class="glass-box project-card" data-index="1">
+                        <a href="webnhac/index.html" class="glass-box project-card" data-index="1">
                             <div class="card-top">
                                 <span class="project-num">02</span>
                                 <span class="project-badge badge-premium">Premium</span>
@@ -276,7 +159,7 @@
                         </a>
 
                         <!-- Assignment 3 -->
-                        <a href="playernolife/index.html" class="glass-box project-card" data-index="2">
+                        <a href="gioithieubanthan/index.html" class="glass-box project-card" data-index="2">
                             <div class="card-top">
                                 <span class="project-num">03</span>
                                 <span class="project-badge badge-completed">Hoàn thành</span>
@@ -351,7 +234,7 @@
                         </a>
 
                         <!-- Assignment 6 -->
-                        <a href="Thuê Sân Cầu Lông/index.html" class="glass-box project-card" data-index="5">
+                        <a href="thuesancaulong/index.html" class="glass-box project-card" data-index="5">
                             <div class="card-top">
                                 <span class="project-num">06</span>
                                 <span class="project-badge badge-premium">Premium</span>
@@ -399,7 +282,7 @@
                                 <i data-lucide="arrow-right"></i>
                             </div>
                         </a>
-                        <a href="Điểm Rèn Luyện/index.html" class="glass-box project-card" data-index="7">
+                        <a href="diemrenluyen/index.html" class="glass-box project-card" data-index="7">
                             <div class="card-top">
                                 <span class="project-num">08</span>
                                 <span class="project-badge badge-premium">Premium</span>
@@ -427,36 +310,12 @@
                     </div>
                 </section>
 
-                <!-- Interactive Command Terminal Widget -->
-                <section class="slide-up-in delay-4" id="terminalSection">
-                    <div class="glass-box terminal-card">
-                        <div class="terminal-header">
-                            <div class="terminal-controls">
-                                <span class="term-dot dot-red"></span>
-                                <span class="term-dot dot-yellow"></span>
-                                <span class="term-dot dot-green"></span>
-                            </div>
-                            <span class="terminal-title">phuc-terminal-v4.sh</span>
-                            <div style="width: 42px;"></div> <!-- Spacer -->
-                        </div>
-                        <div class="terminal-body" id="terminalBody">
-                            <div class="terminal-output" id="terminalOutput"></div>
-                            <div class="terminal-input-line">
-                                <span class="terminal-prompt">
-                                    <span class="terminal-prompt-user">guest</span>@phuc-pc:~$
-                                </span>
-                                <input type="text" class="terminal-input" id="terminalInput"
-                                    placeholder="Gõ 'help' để xem danh sách lệnh..." autocomplete="off">
-                            </div>
-                        </div>
-                    </div>
-                </section>
 
             </div>
         </main>
 
         <!-- Dashboard Footer -->
-        <footer class="dashboard-footer slide-up-in delay-5">
+        <footer class="dashboard-footer">
             <div class="footer-inner">
                 <div class="footer-meta-wrap">
                     <span class="footer-name">Đặng Nguyễn Duy Phúc</span>
@@ -519,10 +378,7 @@
         </div>
     </div>
 
-    <!-- Page entry loader transition -->
-    <div class="page-transition" id="pageTransition">
-        <div class="transition-loader"></div>
-    </div>
+
 
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -37,10 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Trigger particle color shift if system active
-        if (typeof updateParticleThemeColors === 'function') {
-            updateParticleThemeColors(themeName);
-        }
+
     }
 
     // Bind theme button clicks
@@ -56,198 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ==========================================================
-    // CANVASES & ANIMATION: THEME-AWARE PARTICLE SYSTEM
-    // ==========================================================
-    const canvas = document.getElementById('particleCanvas');
-    const ctx = canvas ? canvas.getContext('2d') : null;
-    let particles = [];
-    let mouseX = 0, mouseY = 0;
-    let animationId;
-    let particleColorPalette = [];
-
-    function getPaletteForTheme(theme) {
-        switch (theme) {
-            case 'cyberpunk':
-                return ['0, 240, 255', '255, 0, 127', '189, 0, 255', '57, 255, 20']; // Cyan, Pink, Purple, Green
-            case 'eclipse':
-                return ['197, 160, 89', '212, 175, 55', '230, 202, 101', '255, 255, 255']; // Gold tones
-            case 'terminal':
-                return ['57, 255, 20', '31, 204, 12', '153, 255, 51']; // Hacker greens
-            case 'aurora':
-            default:
-                return ['99, 102, 241', '139, 92, 246', '236, 72, 153', '6, 182, 212', '255, 255, 255']; // Indigo/Purple/Pink
-        }
-    }
-
-    window.updateParticleThemeColors = function(themeName) {
-        particleColorPalette = getPaletteForTheme(themeName);
-        particles.forEach(p => {
-            p.color = particleColorPalette[Math.floor(Math.random() * particleColorPalette.length)];
-        });
-    };
-
-    function resizeCanvas() {
-        if (!canvas) return;
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-
-    class Particle {
-        constructor() {
-            this.reset();
-        }
-
-        reset() {
-            this.x = Math.random() * (canvas ? canvas.width : window.innerWidth);
-            this.y = Math.random() * (canvas ? canvas.height : window.innerHeight);
-            this.size = Math.random() * 2 + 0.5;
-            this.speedX = (Math.random() - 0.5) * 0.25;
-            this.speedY = (Math.random() - 0.5) * 0.25;
-            this.opacity = Math.random() * 0.4 + 0.1;
-            this.fadeSpeed = Math.random() * 0.004 + 0.001;
-            this.fadingIn = Math.random() > 0.5;
-            
-            // Apply current palette
-            const palette = getPaletteForTheme(localStorage.getItem('phuc_theme') || 'aurora');
-            this.color = palette[Math.floor(Math.random() * palette.length)];
-        }
-
-        update() {
-            this.x += this.speedX;
-            this.y += this.speedY;
-
-            // Breathing opacity
-            if (this.fadingIn) {
-                this.opacity += this.fadeSpeed;
-                if (this.opacity >= 0.5) this.fadingIn = false;
-            } else {
-                this.opacity -= this.fadeSpeed;
-                if (this.opacity <= 0.05) this.fadingIn = true;
-            }
-
-            // Mouse attraction (subtle)
-            const dx = mouseX - this.x;
-            const dy = mouseY - this.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 180) {
-                this.speedX += dx * 0.00002;
-                this.speedY += dy * 0.00002;
-            }
-
-            // Damping
-            this.speedX *= 0.998;
-            this.speedY *= 0.998;
-
-            // Screen boundary wrapping
-            if (canvas) {
-                if (this.x < -10) this.x = canvas.width + 10;
-                if (this.x > canvas.width + 10) this.x = -10;
-                if (this.y < -10) this.y = canvas.height + 10;
-                if (this.y > canvas.height + 10) this.y = -10;
-            }
-        }
-
-        draw() {
-            if (!ctx) return;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`;
-            ctx.fill();
-
-            // Soft glowing pulse on hover aura
-            if (this.size > 1.4) {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size * 3.5, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(${this.color}, ${this.opacity * 0.08})`;
-                ctx.fill();
-            }
-        }
-    }
-
-    function initParticles() {
-        if (!canvas || !ctx) return;
-        resizeCanvas();
-        const count = Math.min(65, Math.floor((window.innerWidth * window.innerHeight) / 22000));
-        particles = [];
-        for (let i = 0; i < count; i++) {
-            particles.push(new Particle());
-        }
-    }
-
-    function drawConnections() {
-        if (!ctx) return;
-        let lineThemeColor = '139, 92, 246'; // Default purple
-        const activeTheme = localStorage.getItem('phuc_theme') || 'aurora';
-        
-        if (activeTheme === 'cyberpunk') lineThemeColor = '0, 240, 255';
-        else if (activeTheme === 'eclipse') lineThemeColor = '197, 160, 89';
-        else if (activeTheme === 'terminal') lineThemeColor = '57, 255, 20';
-
-        for (let i = 0; i < particles.length; i++) {
-            for (let j = i + 1; j < particles.length; j++) {
-                const dx = particles[i].x - particles[j].x;
-                const dy = particles[i].y - particles[j].y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                
-                if (dist < 130) {
-                    const opacity = (1 - dist / 130) * 0.07;
-                    ctx.beginPath();
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = `rgba(${lineThemeColor}, ${opacity})`;
-                    ctx.lineWidth = 0.5;
-                    ctx.stroke();
-                }
-            }
-        }
-    }
-
-    function animateParticles() {
-        if (!ctx || !canvas) return;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => {
-            p.update();
-            p.draw();
-        });
-        drawConnections();
-        animationId = requestAnimationFrame(animateParticles);
-    }
-
-    if (canvas) {
-        initParticles();
-        animateParticles();
-        window.addEventListener('resize', () => {
-            resizeCanvas();
-            initParticles();
-        });
-    }
-
-
-    // ==========================================================
-    // CURSOR GLOW AND MAGNETIC INTERACTIONS
-    // ==========================================================
-    const cursorGlow = document.getElementById('cursorGlow');
-    let glowTimeout;
-
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-
-        if (cursorGlow) {
-            cursorGlow.style.left = e.clientX + 'px';
-            cursorGlow.style.top = e.clientY + 'px';
-            cursorGlow.classList.add('active');
-
-            clearTimeout(glowTimeout);
-            glowTimeout = setTimeout(() => {
-                cursorGlow.classList.remove('active');
-            }, 2500);
-        }
-    });
-
-
-    // ==========================================================
-    // STATS & PROGRESS SVG ANIMATION
+    // STATS (set values directly, no animation)
     // ==========================================================
     function initStatsDashboard() {
         const statCompleted = document.getElementById('statCompleted');
@@ -255,46 +61,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const statPercent = document.getElementById('statPercent');
         const statCircle = document.getElementById('statCircle');
         const statEffort = document.getElementById('statEffort');
-        
-        // Set fixed evaluation counters
-        const targetProjects = 7;
-        const targetTech = 5;
-        const targetPercent = 100;
-        const targetEffort = 100;
 
-        // SVGCircle math: R = 23 -> Circ = 2 * PI * 23 = 144.5
-        const circumference = 144.5;
-
-        setTimeout(() => {
-            // Circle dash anim
-            if (statCircle) {
-                statCircle.style.transition = 'stroke-dashoffset 1.8s cubic-bezier(0.4, 0, 0.2, 1)';
-                statCircle.style.strokeDashoffset = 0; // 100% completed
-            }
-
-            // Animate Numeric counters
-            animateValue(statCompleted, 0, targetProjects, 1000, '/7');
-            animateValue(statTech, 0, targetTech, 1200, '');
-            animateValue(statPercent, 0, targetPercent, 1500, '%');
-            animateValue(statEffort, 0, targetEffort, 1500, '%');
-        }, 800);
-    }
-
-    function animateValue(obj, start, end, duration, suffix = '') {
-        if (!obj) return;
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            // Cubic ease out
-            const easedProgress = 1 - Math.pow(1 - progress, 3);
-            const currentVal = Math.floor(easedProgress * (end - start) + start);
-            obj.textContent = currentVal + suffix;
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
-            }
-        };
-        window.requestAnimationFrame(step);
+        if (statCompleted) statCompleted.textContent = '7/7';
+        if (statTech) statTech.textContent = '5';
+        if (statPercent) statPercent.textContent = '100%';
+        if (statEffort) statEffort.textContent = '100%';
+        if (statCircle) statCircle.style.strokeDashoffset = 0;
     }
 
     initStatsDashboard();
@@ -483,22 +255,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     setDynamicGreeting();
 
-    // Typewriter Title Simulation
+    // Set title text directly (no typewriter)
     const titleTextEl = document.getElementById('mainTitleText');
     if (titleTextEl) {
-        const fullString = "Trung Tâm Dự Án và Bài Tập";
-        titleTextEl.textContent = "";
-        let charIdx = 0;
-
-        function runTypewriter() {
-            if (charIdx < fullString.length) {
-                titleTextEl.textContent += fullString.charAt(charIdx);
-                charIdx++;
-                setTimeout(runTypewriter, 50 + Math.random() * 40);
-            }
-        }
-        // Run after load
-        setTimeout(runTypewriter, 600);
+        titleTextEl.textContent = "Trung Tâm Dự Án và Bài Tập";
     }
 
 
@@ -632,12 +392,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let commandHistory = [];
 
     const assignmentsInfo = [
-        { id: "1", name: "Bài Thơ", folder: "bai%20tho/index.html", tech: "HTML5, CSS3, Google Fonts" },
-        { id: "2", name: "Web Âm Nhạc", folder: "web%20nhac/index.html", tech: "Vanilla JS, LocalStorage, HTML Audio API" },
-        { id: "3", name: "Giới thiệu bản thân", folder: "playernolife/index.html", tech: "Glassmorphism UI, Responsive Transitions" },
+        { id: "1", name: "Bài Thơ", folder: "baitho/index.html", tech: "HTML5, CSS3, Google Fonts" },
+        { id: "2", name: "Web Âm Nhạc", folder: "webnhac/index.html", tech: "Vanilla JS, LocalStorage, HTML Audio API" },
+        { id: "3", name: "Giới thiệu bản thân", folder: "gioithieubanthan/index.html", tech: "Glassmorphism UI, Responsive Transitions" },
         { id: "4", name: "Trang Login", folder: "tranglogin/index.html", tech: "Captcha Generator, Regex Form Validation" },
         { id: "5", name: "Đăng kí dự thi", folder: "trangdangkiduthi/index.html", tech: "Complex Forms, Validations, File Uploader" },
-        { id: "6", name: "Thuê sân cầu lông", folder: "Thuê Sân Cầu Lông/index.html", tech: "Booking Application, Custom Pricing Algorithm" },
+        { id: "6", name: "Thuê sân cầu lông", folder: "thuesancaulong/index.html", tech: "Booking Application, Custom Pricing Algorithm" },
         { id: "7", name: "Thế giới di động", folder: "thegioididong/index.html", tech: "E-Commerce Clone, Grid Layouts, Carousels" }
     ];
 
@@ -891,27 +651,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     updateClock();
     setInterval(updateClock, 1000);
-
-
-    // ==========================================================
-    // INITIAL LOAD PAGE TRANSITION DE-ACTIVATION
-    // ==========================================================
-    const pageTransition = document.getElementById('pageTransition');
-    if (pageTransition) {
-        setTimeout(() => {
-            pageTransition.style.opacity = 0;
-            setTimeout(() => {
-                pageTransition.style.display = 'none';
-            }, 400);
-        }, 500);
-    }
-
-    // Handle background browser particle pause to conserve CPU cycles
-    document.addEventListener('visibilitychange', () => {
-        if (document.hidden && animationId) {
-            cancelAnimationFrame(animationId);
-        } else if (!document.hidden) {
-            animateParticles();
-        }
-    });
 });
